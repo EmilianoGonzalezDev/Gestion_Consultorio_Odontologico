@@ -4,7 +4,7 @@
 ###### Sistema de gestión de consultorio odontológico.
 ###### Desarrollado en Laravel 6. Este sistema va a permitir:
 
-* Gestionar Ususarios del sistema
+* Gestionar Usuarios del sistema
 * Gestionar Pacientes
 * Gestionar Atenciones, Pagos, Saldos
 * Gestionar Insumos, Stock, Compras
