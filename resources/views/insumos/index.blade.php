@@ -25,7 +25,7 @@
             <a href="{{ route('insumos.create') }}" class="btn btn-primary">Nuevo Insumo</a>
             <a href="{{ route('comprainsumos.index') }}" class="btn btn-secondary">Ver Compras</a>
         </div>
-        <table id="insumos">
+        <table id="insumos" class="display nowrap" cellspacing="0">
             <thead>
             <tr>
                 <th>Cód</th>
@@ -78,7 +78,8 @@
     {
         $('#insumos').DataTable
         ({
-            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" }
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+            responsive: true
         });
     });
 

@@ -14,7 +14,7 @@
      
         <h2>Insumos Eliminados</h2>
 
-        <table id="insumos">
+        <table id="insumos" class="display nowrap" cellspacing="0">
             <thead>
             <tr>
                 <th>Cód</th>
@@ -61,7 +61,8 @@
     {
         $('#insumos').DataTable
         ({
-            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" }
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+            responsive: true
         });
     });
 

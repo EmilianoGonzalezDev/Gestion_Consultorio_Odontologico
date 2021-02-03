@@ -22,7 +22,7 @@
         
             <h2>Usuarios</h2>
             <div class="my-4"><a href="<?php echo e(route('empleados.create')); ?>" class="btn btn-primary btn-sm">Nuevo Usuario</a></div>
-            <table id="empleados">
+            <table id="empleados" class="display nowrap" cellspacing="0">
                 <thead>
                 <tr>
                     <th>Cód</th>
@@ -78,7 +78,8 @@
         {
             $('#empleados').DataTable
             ({
-                "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" }
+                "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+                responsive: true
             });
         });
         </script>

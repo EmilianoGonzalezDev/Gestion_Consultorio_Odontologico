@@ -22,7 +22,7 @@
      
         <h2>Pacientes</h2>
         <div class="my-4"><a href="{{ route('pacientes.create') }}" class="btn btn-primary btn-sm">Nuevo Paciente</a></div>
-        <table id="pacientes">
+        <table id="pacientes" class="display nowrap" cellspacing="0">
             <thead>
             <tr>
                 <th>Cód</th>
@@ -70,7 +70,8 @@
     {
         $('#pacientes').DataTable
         ({
-            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" }
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+            responsive: true
         });
     });
 

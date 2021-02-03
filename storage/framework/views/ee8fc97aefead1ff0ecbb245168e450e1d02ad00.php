@@ -21,7 +21,7 @@
      
         <h2>Fichas de ortodoncia</h2>
         <div class="my-4"><a href="<?php echo e(route('ortodoncias.create')); ?>" class="btn btn-primary btn-sm">Crear nueva</a></div>
-        <table id="ortodoncias">
+        <table id="ortodoncias" class="display nowrap" cellspacing="0">
             <thead>
             <tr>
                 <th>#Ficha</th>
@@ -74,7 +74,8 @@
     {
         $('#ortodoncias').DataTable
         ({
-            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" }
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+            responsive: true
         });
     });
 

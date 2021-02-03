@@ -16,7 +16,7 @@
         <div class="my-4 btn-group-sm">
 
         </div>
-        <table id="atenciones">
+        <table id="atenciones" class="display nowrap" cellspacing="0">
             <thead>
             <tr>
                 <th>#</th>
@@ -68,7 +68,8 @@
     {
         $('#atenciones').DataTable
         ({
-            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" }
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+            responsive: true
         });
     });
     </script>

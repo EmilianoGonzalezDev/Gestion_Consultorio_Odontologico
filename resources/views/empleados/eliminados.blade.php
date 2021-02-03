@@ -14,7 +14,7 @@
             @endif
         
             <h2>Usuarios Eliminados</h2>
-            <table id="empleados">
+            <table id="empleados" class="display nowrap" cellspacing="0">
                 <thead>
                 <tr>
                     <th>#N°</th>
@@ -66,7 +66,8 @@
         {
             $('#empleados').DataTable
             ({
-                "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" }
+                "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+                responsive: true
             });
         });
         </script>

@@ -14,7 +14,7 @@
 
         <h2>Registros eliminados de historial de compras de insumo</h2>
 
-        <table id="comprainsumos">
+        <table id="comprainsumos" class="display nowrap" cellspacing="0">
             <thead>
             <tr>
                 <th>#N°</th>
@@ -67,7 +67,8 @@
     {
         $('#comprainsumos').DataTable
         ({
-            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" }
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+            responsive: true
         });
     });
 
