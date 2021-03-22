@@ -44,11 +44,11 @@
     </div>
         
     <!-- HISTORIAL COMPRAS  -->
-    <div style="display: inline-block;"> 
+    <div  style="display: inline-block;"> 
     <br>
     <h4>Historial de Compras</h4>
-    <table id="historial_stock" border=1>
-            <thead>
+    <table id="historial_stock" class="table table-hover table-bordered table-responsive">
+            <thead class="thead-dark">
                 <tr>
                     <th>#</th>
                     <th>Fecha</th>
@@ -75,8 +75,8 @@
     <div style="display: inline-block;">
     <br>
     <h4>Reducciones de Stock</h4>
-    <table id="reducciones_stock" border=1>
-            <thead>
+    <table id="reducciones_stock" class="table table-hover table-bordered table-responsive">
+            <thead class="thead-dark">
                 <tr>
                     <th>#</th>
                     <th>Fecha</th>

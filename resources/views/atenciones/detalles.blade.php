@@ -37,7 +37,10 @@
             <div class="card-header">Detalles</div>
             <div class="card-body">
                     <table>
-                    <tr><td><b>Paciente:</b></td><td>  #{{ $paciente->id }} - {{ $paciente->nombre }} {{ $paciente->apellido }}</td></tr>
+                        <tr><td><b>Paciente:</b></td><td>  #{{ $paciente->id }} - {{ $paciente->nombre }} {{ $paciente->apellido }}</td></tr>
+                    @if (App\Paciente::paciente($atencion->paciente_id)->deleted_at)
+                        <tr><td></td><td><span style="color:red"> (paciente dado de baja) </span></td></tr>
+                    @endif
                     <tr><td><b>Profesional:</b></td><td>  {{ $profesional->nombre }} {{ $profesional->apellido }} </td></tr>
                     <tr><td><b>Fecha:</b></td><td>  {{ $atencion->fecha->formatLocalized('%d/%m/%Y') }} {{\Carbon\Carbon::parse($atencion->hora)->formatLocalized('%H:%M')}}</td></tr>
                     <tr><td><b>Arcada superior:</b></td><td>  {{ $atencion->arcada_superior }}</td></tr>
@@ -59,11 +62,11 @@
     </div>
         
     <!-- HISTORIAL DE PAGOS -->
-    <div class="col-md-12">
+    <div class="col-md-8">
     <br>
     <h4>Historial de pagos recibidos para esta atención</h4>
-    <table id="historia_pagos" border=1>
-            <thead>
+    <table id="historia_pagos" class="table table-hover table-bordered table-responsive">
+            <thead class="thead-dark">
                 <tr>
                     <th>#Pago</th>
                     <th>Fecha pago</th>

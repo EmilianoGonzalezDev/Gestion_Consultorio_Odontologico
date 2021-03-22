@@ -36,7 +36,10 @@
             <div class="card-header">Detalles</div>
             <div class="card-body">
                     <table>
-                    <tr><td><b>Paciente:</b></td><td>  #<?php echo e($paciente->id); ?> - <?php echo e($paciente->nombre); ?> <?php echo e($paciente->apellido); ?></td></tr>
+                        <tr><td><b>Paciente:</b></td><td>  #<?php echo e($paciente->id); ?> - <?php echo e($paciente->nombre); ?> <?php echo e($paciente->apellido); ?></td></tr>
+                    <?php if(App\Paciente::paciente($atencion->paciente_id)->deleted_at): ?>
+                        <tr><td></td><td><span style="color:red"> (paciente dado de baja) </span></td></tr>
+                    <?php endif; ?>
                     <tr><td><b>Profesional:</b></td><td>  <?php echo e($profesional->nombre); ?> <?php echo e($profesional->apellido); ?> </td></tr>
                     <tr><td><b>Fecha:</b></td><td>  <?php echo e($atencion->fecha->formatLocalized('%d/%m/%Y')); ?> <?php echo e(\Carbon\Carbon::parse($atencion->hora)->formatLocalized('%H:%M')); ?></td></tr>
                     <tr><td><b>Arcada superior:</b></td><td>  <?php echo e($atencion->arcada_superior); ?></td></tr>
@@ -58,11 +61,11 @@
     </div>
         
     <!-- HISTORIAL DE PAGOS -->
-    <div class="col-md-12">
+    <div class="col-md-8">
     <br>
     <h4>Historial de pagos recibidos para esta atención</h4>
-    <table id="historia_pagos" border=1>
-            <thead>
+    <table id="historia_pagos" class="table table-hover table-bordered table-responsive">
+            <thead class="thead-dark">
                 <tr>
                     <th>#Pago</th>
                     <th>Fecha pago</th>

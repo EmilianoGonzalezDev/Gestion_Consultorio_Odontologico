@@ -70,13 +70,16 @@
             </div>
         </div>
     <?php endif; ?>
-        
+</div>
+
+<div class="container">
     <!-- HISTORIA CLÍNICA -->
-    <div class="col-md-12">
+    <div class="">
+    <br>
     <br>
     <h4>Historia clínica</h4>
-    <table id="historia_clinica" border=1>
-            <thead>
+    <table id="historia_clinica" class="table table-hover table-bordered table-responsive">
+            <thead class="thead-dark">
                 <tr>
                     <th>#</th>
                     <th>Profesional</th>
@@ -109,6 +112,7 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
     </table>
+    <br>
     Saldo actual: <b> $<?php echo e(App\Paciente::deuda($paciente->id)); ?> </b>
     <br>
     </div>
@@ -122,7 +126,7 @@
         {
             var selectPaciente = document.getElementById('paciente_id');         
             selectPaciente.value = <?php echo e($paciente->id); ?>;
-            //document.getElementById('form_crear_atencion').style = "display:none";
+            document.getElementById('form_crear_atencion').style = "display:none";
         });
 </script>
 

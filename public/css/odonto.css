@@ -1,0 +1,29 @@
+.div_tabla{
+    max-width: 85%;
+}
+
+/* En tablas, mantener botones de acción en la misma línea*/
+.dt-col-nowrap {
+    white-space: nowrap;
+}
+
+
+
+/* Para resoluciones MAYORES a 1299px de ancho */
+@media screen and (max-width: 1300px) {
+    .div_tabla{
+        max-width: 80%; 
+    }
+  }
+
+/* Para resoluciones MENORES a 1801px de ancho */
+@media screen and (min-width: 1800px) {
+    .div_tabla{
+        display: table;
+        margin: auto;
+    }
+
+    .div_titulo{
+        margin-left: 200px;
+    }
+  }
