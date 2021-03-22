@@ -3,26 +3,18 @@
 @section('content')
 @auth
 @if (auth()->user()->rol == 1)
-<!-- Mensajes post acción -->
-<div class="container my-4">
-    @if ( session('mensaje') )
-    <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        {{ session('mensaje') }}
-    </div>
-    @endif
 
-    @if (Session::has('deleted'))
+<!-- Mensaje post eliminar -->
+@if (Session::has('deleted'))
+<div class="container my-4">
     <div class="alert alert-warning alert-dismissable" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         Empleado eliminado, si desea deshacer haga <a href="{{ route('empleados.restore', [Session::get('deleted')]) }}">Click aquí</a>
     </div>
-    @endif
 </div>
+@endif
 
 <!-- Título y botón "Nuevo" -->
 <div class="div_titulo">

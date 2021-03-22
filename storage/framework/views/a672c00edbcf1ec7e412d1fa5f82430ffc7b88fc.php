@@ -30,7 +30,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="arcada_superior" value="<?php echo e($atencion->arcada_superior); ?>" required autocomplete="arcada_superior" autofocus>
+unset($__errorArgs, $__bag); ?>" name="arcada_superior" value="<?php echo e($atencion->arcada_superior); ?>">
 
                                 <?php $__errorArgs = ['arcada_superior'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -58,7 +58,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="arcada_inferior" value="<?php echo e($atencion->arcada_inferior); ?>" required autocomplete="arcada_inferior" autofocus>
+unset($__errorArgs, $__bag); ?>" name="arcada_inferior" value="<?php echo e($atencion->arcada_inferior); ?>">
 
                                 <?php $__errorArgs = ['arcada_inferior'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -86,7 +86,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="operacion_prevista" value="<?php echo e($atencion->operacion_prevista); ?>" required autocomplete="operacion_prevista" autofocus>
+unset($__errorArgs, $__bag); ?>" name="operacion_prevista" value="<?php echo e($atencion->operacion_prevista); ?>">
 
                                 <?php $__errorArgs = ['operacion_prevista'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -114,7 +114,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="proximo_turno" value="<?php echo e($atencion->proximo_turno); ?>" required autocomplete="proximo_turno" autofocus>
+unset($__errorArgs, $__bag); ?>" name="proximo_turno" value="<?php echo e($atencion->proximo_turno); ?>">
 
                                 <?php $__errorArgs = ['proximo_turno'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

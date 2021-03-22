@@ -2,18 +2,6 @@
 
 @section('content')
 
-<!-- Mensajes post acción -->
-<div class="container my-4">
-    @if ( session('mensaje') )
-    <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        {{ session('mensaje') }}
-    </div>
-    @endif
-</div>
-
 <!-- Título -->
 <h2 style="text-align: center;">Atenciones - Registros Eliminados</h2>
 

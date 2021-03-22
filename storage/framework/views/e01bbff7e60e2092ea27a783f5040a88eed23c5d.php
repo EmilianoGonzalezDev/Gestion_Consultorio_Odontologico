@@ -24,21 +24,27 @@
                             <label for="usuario" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Usuario')); ?> *</label>
 
                             <div class="col-md-6">
-                                <input id="usuario" type="text" maxlength="25" class="form-control <?php if ($errors->has('usuario')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('usuario'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="usuario" value="<?php echo e(old('usuario')); ?>" required autocomplete="usuario" autofocus>
+                                <input id="usuario" type="text" maxlength="25" class="form-control <?php $__errorArgs = ['usuario'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="usuario" value="<?php echo e(old('usuario')); ?>" required autocomplete="usuario" autofocus>
 
-                                <?php if ($errors->has('usuario')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('usuario'); ?>
+                                <?php $__errorArgs = ['usuario'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -46,21 +52,27 @@ endif; ?>
                             <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Contraseña')); ?> *</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" maxlength="25" class="form-control <?php if ($errors->has('password')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('password'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" maxlength="25" class="form-control <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="new-password">
 
-                                <?php if ($errors->has('password')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('password'); ?>
+                                <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -78,21 +90,27 @@ endif; ?>
                             <label for="nombre" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Nombre')); ?> *</label>
 
                             <div class="col-md-6">
-                                <input id="nombre" type="text" maxlength="25" class="form-control <?php if ($errors->has('nombre')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('nombre'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="nombre" value="<?php echo e(old('nombre')); ?>" required autocomplete="nombre">
+                                <input id="nombre" type="text" maxlength="25" class="form-control <?php $__errorArgs = ['nombre'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="nombre" value="<?php echo e(old('nombre')); ?>" required autocomplete="nombre">
 
-                                <?php if ($errors->has('nombre')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('nombre'); ?>
+                                <?php $__errorArgs = ['nombre'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -100,21 +118,27 @@ endif; ?>
                             <label for="apellido" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Apellido')); ?> *</label>
 
                             <div class="col-md-6">
-                                <input id="apellido" type="text" maxlength="25" class="form-control <?php if ($errors->has('apellido')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('apellido'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="apellido" value="<?php echo e(old('apellido')); ?>" required autocomplete="apellido">
+                                <input id="apellido" type="text" maxlength="25" class="form-control <?php $__errorArgs = ['apellido'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="apellido" value="<?php echo e(old('apellido')); ?>" required autocomplete="apellido">
 
-                                <?php if ($errors->has('apellido')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('apellido'); ?>
+                                <?php $__errorArgs = ['apellido'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -128,15 +152,18 @@ endif; ?>
                                     <option value=0>No</option>
                                 </select>
 
-                                <?php if ($errors->has('odontologo')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('odontologo'); ?>
+                                <?php $__errorArgs = ['odontologo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -144,21 +171,27 @@ endif; ?>
                             <label for="dni" class="col-md-4 col-form-label text-md-right"><?php echo e(__('DNI')); ?> *</label>
 
                             <div class="col-md-6">
-                                <input id="dni" type="number" min="0" max="999999999" class="form-control <?php if ($errors->has('dni')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('dni'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="dni" value="<?php echo e(old('dni')); ?>" required autocomplete="dni" autofocus>
+                                <input id="dni" type="number" min="0" max="999999999" class="form-control <?php $__errorArgs = ['dni'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="dni" value="<?php echo e(old('dni')); ?>" required autocomplete="dni" autofocus>
 
-                                <?php if ($errors->has('dni')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('dni'); ?>
+                                <?php $__errorArgs = ['dni'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -168,21 +201,27 @@ endif; ?>
                             <label for="direccion" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Dirección')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="direccion" type="text" maxlength="60" class="form-control <?php if ($errors->has('direccion')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('direccion'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="direccion" value="<?php echo e(old('direccion')); ?>">
+                                <input id="direccion" type="text" maxlength="60" class="form-control <?php $__errorArgs = ['direccion'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="direccion" value="<?php echo e(old('direccion')); ?>">
 
-                                <?php if ($errors->has('direccion')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('direccion'); ?>
+                                <?php $__errorArgs = ['direccion'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -190,21 +229,27 @@ endif; ?>
                             <label for="fechanacimiento" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Fecha de nacimiento')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="fechanacimiento" type="date" class="form-control <?php if ($errors->has('fechanacimiento')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('fechanacimiento'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="fechanacimiento" value="<?php echo e(old('fechanacimiento')); ?>">
+                                <input id="fechanacimiento" type="date" class="form-control <?php $__errorArgs = ['fechanacimiento'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="fechanacimiento" value="<?php echo e(old('fechanacimiento')); ?>">
 
-                                <?php if ($errors->has('fechanacimiento')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('fechanacimiento'); ?>
+                                <?php $__errorArgs = ['fechanacimiento'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -212,21 +257,27 @@ endif; ?>
                             <label for="email" class="col-md-4 col-form-label text-md-right"><?php echo e(__('E-Mail')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" maxlength="45" class="form-control <?php if ($errors->has('email')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('email'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="email" value="<?php echo e(old('email')); ?>">
+                                <input id="email" type="email" maxlength="45" class="form-control <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email')); ?>">
 
-                                <?php if ($errors->has('email')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('email'); ?>
+                                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -234,21 +285,27 @@ endif; ?>
                             <label for="telefono" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Teléfono')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="telefono" type="text" maxlength="35" class="form-control <?php if ($errors->has('telefono')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('telefono'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="telefono" value="<?php echo e(old('telefono')); ?>">
+                                <input id="telefono" type="text" maxlength="35" class="form-control <?php $__errorArgs = ['telefono'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="telefono" value="<?php echo e(old('telefono')); ?>">
 
-                                <?php if ($errors->has('telefono')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('telefono'); ?>
+                                <?php $__errorArgs = ['telefono'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -256,21 +313,27 @@ endif; ?>
                             <label for="comentarios" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Comentarios')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="comentarios" type="text" maxlength="100" class="form-control <?php if ($errors->has('comentarios')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('comentarios'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="comentarios" value="<?php echo e(old('comentarios')); ?>">
+                                <input id="comentarios" type="text" maxlength="100" class="form-control <?php $__errorArgs = ['comentarios'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="comentarios" value="<?php echo e(old('comentarios')); ?>">
 
-                                <?php if ($errors->has('comentarios')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('comentarios'); ?>
+                                <?php $__errorArgs = ['comentarios'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -278,21 +341,27 @@ endif; ?>
                             <label for="rol" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Rol')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="rol" type="number" min="1" max="9" class="form-control <?php if ($errors->has('rol')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('rol'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="rol" value="<?php echo e(old('rol')); ?>">
+                                <input id="rol" type="number" min="1" max="9" class="form-control <?php $__errorArgs = ['rol'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="rol" value="<?php echo e(old('rol')); ?>">
 
-                                <?php if ($errors->has('rol')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('rol'); ?>
+                                <?php $__errorArgs = ['rol'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
                                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                         
@@ -302,6 +371,7 @@ endif; ?>
                                     <?php echo e(__('Enviar')); ?>
 
                                 </button>
+                                <a href="<?php echo e(route('empleados.index')); ?>" class="btn btn-secondary">Volver</a>
                             </div>
                         </div>
                     </form>

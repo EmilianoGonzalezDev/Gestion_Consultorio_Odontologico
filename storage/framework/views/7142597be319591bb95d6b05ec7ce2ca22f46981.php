@@ -15,7 +15,7 @@
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js" defer></script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js" defer></script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js" defer></script>
-    
+
 
 
 
@@ -34,15 +34,17 @@
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/odonto.css')); ?>" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
         <?php if(auth()->guard()->guest()): ?>
         <?php else: ?>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                
-                <a class="navbar-brand" href="#"> <!-- <-Acá se puede poner un enlace -->
-                   <!-- *Acá se puede poner un nombre* -->
+
+                <a class="navbar-brand" href="#">
+                    <!-- <-Acá se puede poner un enlace -->
+                    <!-- *Acá se puede poner un nombre* -->
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
@@ -59,34 +61,33 @@
                         <li class="nav-item"><a class="nav-link" href="<?php echo e(route('comprainsumos.index')); ?>">Compras</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?php echo e(route('ortodoncias.index')); ?>">Fichas Ort</a></li>
                         <?php if(auth()->guard()->check()): ?>
-                            <?php if(auth()->user()->rol == 1): ?>
-                                <li class="nav-item"><a class="nav-link" href="<?php echo e(route('reportes.index')); ?>">Reportes</a></li>
-                                <li class="nav-item"><a class="nav-link" href="<?php echo e(route('empleados.index')); ?>">Usuarios</a></li>
-                            <?php endif; ?>
+                        <?php if(auth()->user()->rol == 1): ?>
+                        <li class="nav-item"><a class="nav-link" href="<?php echo e(route('reportes.index')); ?>">Reportes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?php echo e(route('empleados.index')); ?>">Usuarios</a></li>
+                        <?php endif; ?>
                         <?php endif; ?>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <?php echo e(Auth::user()->nombre); ?> <span class="caret"></span>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <?php echo e(Auth::user()->nombre); ?> <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <?php echo e(__('Salir')); ?>
+
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <?php echo e(__('Salir')); ?>
-
-                                    </a>
-
-                                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                                        <?php echo csrf_field(); ?>
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                    <?php echo csrf_field(); ?>
+                                </form>
+                            </div>
+                        </li>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -94,9 +95,24 @@
         </nav>
 
         <main class="py-4">
+            <?php if( session('mensaje') ): ?>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <?php echo e(session('mensaje')); ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
 </body>
-</html>
-<?php /**PATH C:\laragon\www\odonto\resources\views/layouts/app.blade.php ENDPATH**/ ?>
+
+</html><?php /**PATH C:\laragon\www\odonto\resources\views/layouts/app.blade.php ENDPATH**/ ?>

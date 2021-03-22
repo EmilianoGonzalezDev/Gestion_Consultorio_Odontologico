@@ -1,13 +1,5 @@
 <?php $__env->startSection('content'); ?>
 
-<?php if( session('mensaje') ): ?> 
-<div class="alert alert-success">
-    <a href="<?php echo e(route('insumos.index')); ?>" class="btn btn-success btn-sm" role="button">Volver</a>
-     <?php echo e(session('mensaje')); ?>
-
-</div>
-<?php endif; ?>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -137,7 +129,7 @@ unset($__errorArgs, $__bag); ?>
                                 <button type="submit" class="btn btn-primary">
                                     Registrar Compra
                                 </button>
-                                <a href="<?php echo e(URL::previous()); ?>" class="btn btn-secondary">Volver</a>
+                                <a href="<?php echo e(route('comprainsumos.index')); ?>" class="btn btn-secondary">Volver</a>
                             </div>
                         </div>
                     </form>

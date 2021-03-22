@@ -6,18 +6,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
-        <?php if( session('mensaje') ): ?> <!-- Si se crea OK! lo informa -->
-        <div class="alert alert-success alert-dismissable">
-            <a href="<?php echo e(route('atenciones.index')); ?>" class="btn btn-success btn-sm" role="button">Ver Atenciones</a>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                </button>
-            <?php echo e(session('mensaje')); ?>
-
-        </div>
-        <?php endif; ?>
-
             <div class="card" id="form_crear_atencion">
                 <div class="card-header">Registrar nueva atención</div>
 
@@ -307,7 +295,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="proximo_turno" value="<?php echo e(old('proximo_turno')); ?>" autocomplete="off">
+unset($__errorArgs, $__bag); ?>" name="proximo_turno" value="<?php echo e(old('proximo_turno')); ?>">
 
                                 <?php $__errorArgs = ['proximo_turno'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -329,7 +317,7 @@ unset($__errorArgs, $__bag); ?>
                                 <button type="submit" class="btn btn-primary">
                                     Enviar
                                 </button>
-                                <a href="<?php echo e(URL::previous()); ?>" class="btn btn-secondary">Volver</a>
+                                <a href="<?php echo e(route('atenciones.index')); ?>" class="btn btn-secondary">Volver</a>
                             </div>
                         </div>
                     </form>

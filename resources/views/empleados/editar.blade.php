@@ -3,12 +3,6 @@
 @section('content')
 @auth
     @if (auth()->user()->rol == 1)
-        @if ( session('mensaje') ) {{-- Si se crea OK! lo informa --}}
-        <div class="alert alert-success">
-            <a href="{{ route('empleados.index') }}" class="btn btn-success btn-sm" role="button">Volver</a>
-            {{ session('mensaje') }}
-        </div>
-        @endif
 
         <div class="container">
             <div class="row justify-content-center">
