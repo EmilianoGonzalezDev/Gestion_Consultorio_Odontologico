@@ -33,6 +33,7 @@
                 <th>DNI</th>
                 <th>Teléfono</th>
                 <th>E-mail</th>
+                <th>Saldo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -49,6 +50,7 @@
                 <td>{{$paciente->dni}}</td>
                 <td>{{$paciente->telefono}}</td>
                 <td>{{$paciente->email}}</td>
+                <td>${{ App\Paciente::deuda($paciente->id) }}</td>
                 <td>
                     <div class="btn-group-sm dt-col-nowrap" role="group" aria-label="Basic example">
                         <a href="{{ route('pacientes.show', $paciente) }}" class="btn btn-info">Ver</a>

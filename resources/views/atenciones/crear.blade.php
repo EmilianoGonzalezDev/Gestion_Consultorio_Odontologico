@@ -33,11 +33,18 @@
                         <div class="form-group row">
                             <label for="paciente_id" class="col-md-4 col-form-label text-md-right">Paciente</label>
                             <div class="select col-md-6">
-                                <select name="paciente_id" id="paciente_id" required class="form-control">
-                                    <option value=""></option>
-                                    @foreach ($pacientes as $paciente)
-                                    <option value="{{$paciente->id}}">{{$paciente->nombre}} {{$paciente->apellido}} - cód. {{$paciente->id}}</option>
-                                    @endforeach
+                                    <select name="paciente_id" id="paciente_id" class="form-control" required>
+                                    
+                                    @if (isset($paciente)) <!-- Si se llegó desde la ficha de detalles de un paciente -->
+                                        <option value="{{$paciente->id}}">{{$paciente->nombre}} {{$paciente->apellido}} - cód. {{$paciente->id}}</option>
+                                    
+                                    @else <!-- Si se llegó desde atenciones => nueva atención -->
+                                        <option value=""></option>
+                                        @foreach ($pacientes as $paciente)
+                                        <option value="{{$paciente->id}}">{{$paciente->nombre}} {{$paciente->apellido}} - cód. {{$paciente->id}}</option>
+                                        @endforeach
+                                   
+                                    @endif
                                 </select>
                             </div>
                         </div>

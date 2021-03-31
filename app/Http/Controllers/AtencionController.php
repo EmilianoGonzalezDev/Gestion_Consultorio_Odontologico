@@ -9,6 +9,9 @@ use App\Paciente;
 use App\Insumo;
 use App\Pago;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Concerns\ToArray;
+
+use function Complex\add;
 
 class AtencionController extends Controller
 {
@@ -40,6 +43,13 @@ class AtencionController extends Controller
         $empleados = App\User::get();
         $pacientes = App\Paciente::get();
         return view('atenciones/crear',compact('empleados','pacientes'));
+    }
+
+    public function createByID($id)
+    {        
+        $empleados = App\User::get();
+        $paciente = App\Paciente::findOrFail($id);
+        return view('atenciones/crear',compact('empleados','paciente'));
     }
 
     /**

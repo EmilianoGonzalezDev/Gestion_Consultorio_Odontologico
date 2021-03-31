@@ -39,6 +39,7 @@ Route::post('/insumos.guardarReducirStock', ['as' =>  'insumos.guardarReducirSto
 Route::delete('insumos/deshacerReduccion/{id}', ['as' =>  'insumos.deshacerReduccion', 'uses' => 'InsumoController@deshacerReduccion']);
 Route::get('insumos/restaurarReduccion/{id}', ['as' =>  'insumos.restaurarReduccion', 'uses' => 'InsumoController@restaurarReduccion']);
 
+
 /* COMPRAINSUMOS */
 Route::resource('/comprainsumos', 'CompraInsumoController');
 Route::get('comprainsumos/restore/{id}', ['as' =>  'comprainsumos.restore', 'uses' => 'CompraInsumoController@restore']);
@@ -58,6 +59,7 @@ Route::get('/atenciones/nuevopago/{id}', ['as' =>  'atenciones.nuevoPago', 'uses
 Route::post('/atenciones.guardarPago', ['as' =>  'atenciones.guardarPago', 'uses' => 'AtencionController@guardarPago']);
 Route::delete('/atenciones/eliminarpago/{id}', ['as' =>  'atenciones.eliminarPago', 'uses' => 'AtencionController@eliminarPago']);
 Route::get('/atenciones/restaurarpago/{id}', ['as' =>  'atenciones.restaurarPago', 'uses' => 'AtencionController@restaurarPago']);
+Route::get('atenciones/createByID/{id}', ['as' =>  'atenciones.createByID', 'uses' => 'AtencionController@createByID']);
 
 /* REPORTES */
 Route::get('/reportes/index', ['as' =>  'reportes.index', 'uses' => 'ReporteController@index']);
