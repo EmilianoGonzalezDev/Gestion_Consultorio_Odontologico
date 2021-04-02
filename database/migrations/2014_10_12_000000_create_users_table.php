@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('nombre');
             $table->string('apellido');
-            $table->boolean('odontologo');
             $table->biginteger('dni')->unique()->unsigned();
+            $table->boolean('odontologo');
             $table->string('direccion')->nullable();
             $table->date('fechanacimiento')->nullable();
             $table->string('email')->nullable();

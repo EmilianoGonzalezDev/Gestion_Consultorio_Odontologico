@@ -46,11 +46,17 @@ class EmpleadoController extends Controller
     {
         $request->validate([
             'usuario' => ['required', 'string', 'max:20', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'nombre' => ['required', 'string', 'max:40'],
-            'apellido' => ['required', 'string', 'max:40'],
+            'password' => ['required', 'string', 'min:6', 'max:25', 'confirmed'],
+            'nombre' => ['required', 'string', 'max:25'],
+            'apellido' => ['required', 'string', 'max:25'],
+            'dni' => ['required', 'integer', 'min:1000000', 'max:99999999', 'unique:users'],
             'odontologo' => ['required', 'boolean'],
-            'dni' => ['required', 'max:40', 'unique:users'],
+            'direccion' => ['nullable','string', 'max:60'],
+            'fechanacimiento' => ['nullable','date'],
+            'email' => ['nullable','email', 'max:45'],
+            'telefono' => ['nullable','string', 'max:20'],
+            'comentarios' => ['nullable','string', 'max:100'],
+            'rol' => ['nullable','integer', 'min:1', 'max:9'],
         ]);
         
         $empleadoNuevo = new App\User;
@@ -58,8 +64,8 @@ class EmpleadoController extends Controller
         $empleadoNuevo->password = Hash::make($request->password);
         $empleadoNuevo->nombre = $request->nombre;
         $empleadoNuevo->apellido = $request->apellido;
-        $empleadoNuevo->odontologo = $request->odontologo;
         $empleadoNuevo->dni = $request->dni;
+        $empleadoNuevo->odontologo = $request->odontologo;
         $empleadoNuevo->direccion = $request->direccion;
         if ($request->fechanacimiento)
         {   $fechaNac = $request->fechanacimiento;
