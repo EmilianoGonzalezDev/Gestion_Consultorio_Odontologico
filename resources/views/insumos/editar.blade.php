@@ -15,43 +15,25 @@
 
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre *</label>
-
                             <div class="col-md-6">
                                 <input id="nombre" type="text" maxlength="25" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $insumo->nombre }}" required autocomplete="nombre" autofocus>
-
-                                @error('nombre')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('nombre') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="marca" class="col-md-4 col-form-label text-md-right">Marca *</label>
-
                             <div class="col-md-6">
                                 <input id="marca" type="text" maxlength="25" class="form-control @error('marca') is-invalid @enderror" name="marca" value="{{ $insumo->marca }}" required autocomplete="marca" autofocus>
-
-                                @error('marca')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('marca') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="contenido_cantidad" class="col-md-4 col-form-label text-md-right">Contenido cantidad *</label>
-
                             <div class="col-md-6">
                                 <input id="contenido_cantidad" type="number" min="1" max="99999" class="form-control @error('contenido_cantidad') is-invalid @enderror" name="contenido_cantidad" value="{{ $insumo->contenido_cantidad }}" required autocomplete="contenido_cantidad" autofocus>
-
-                                @error('contenido_cantidad')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('contenido_cantidad') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
@@ -59,29 +41,17 @@
 
                         <div class="form-group row">
                             <label for="contenido_unidad" class="col-md-4 col-form-label text-md-right">Contenido Unidad</label>
-
                             <div class="col-md-6">
                                 <input id="contenido_unidad" type="text" maxlength="4" class="form-control @error('contenido_unidad') is-invalid @enderror" name="contenido_unidad" value="{{ $insumo->contenido_unidad }}">
-
-                                @error('contenido_unidad')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('contenido_unidad') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="detalles" class="col-md-4 col-form-label text-md-right">Detalles</label>
-
                             <div class="col-md-6">
                                 <input id="detalles" type="text" maxlength="25" class="form-control @error('detalles') is-invalid @enderror" name="detalles" value="{{ $insumo->detalles }}">
-
-                                @error('detalles')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('detalles') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 

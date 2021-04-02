@@ -35,53 +35,31 @@
 
                             <div class="col-md-3">
                                 <input id="monto" type="number" step="any" min="0" max="{{$atencion->importe - $atencion->pago}}" class="form-control @error('monto') is-invalid @enderror" name="monto" value="{{ old('monto') }}" required autocomplete="off" autofocus>
-
-                                @error('monto')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('monto') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
 
                             <label for="cubierto_obra_social" class="col-md-2 col-form-label text-md-right">Cubierto O.S.</label>
 
                             <div class="col-md-1">
                                 <input id="cubierto_obra_social" type="checkbox" class="form-control @error('cubierto_obra_social') is-invalid @enderror" name="cubierto_obra_social">
-
-                                @error('cubierto_obra_social')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('cubierto_obra_social') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
 
                         </div>
 
                         <div class="form-group row">
                             <label for="fecha" class="col-md-4 col-form-label text-md-right">Fecha de pago</label>
-
                             <div class="col-md-6">
                                 <input id="fecha" type="date" class="form-control @error('fecha') is-invalid @enderror" name="fecha" value="<?php echo date("Y-m-d"); ?>">
-
-                                @error('fecha')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('fecha') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="detalle" class="col-md-4 col-form-label text-md-right">Detalle</label>
-
                             <div class="col-md-6">
                                 <input id="detalle" type="text" maxlength="25" class="form-control @error('detalle') is-invalid @enderror" name="detalle" value="{{ old('detalle') }}" autocomplete="off">
-
-                                @error('detalle')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('detalle') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 

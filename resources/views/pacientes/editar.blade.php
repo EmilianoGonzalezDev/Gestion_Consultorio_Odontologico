@@ -15,43 +15,25 @@
 
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre *</label>
-
                             <div class="col-md-6">
                                 <input id="nombre" type="text" maxlength="25" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $paciente->nombre }}" required autocomplete="nombre" autofocus>
-
-                                @error('nombre')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('nombre') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="apellido" class="col-md-4 col-form-label text-md-right">Apellido *</label>
-
                             <div class="col-md-6">
                                 <input id="apellido" type="text" maxlength="25" class="form-control @error('apellido') is-invalid @enderror" name="apellido" value="{{ $paciente->apellido }}" required autocomplete="apellido" >
-
-                                @error('apellido')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('apellido') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="dni" class="col-md-4 col-form-label text-md-right">DNI *</label>
-
                             <div class="col-md-6">
                                 <input id="dni" type="number" min="0" max="999999999" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ $paciente->dni }}" required autocomplete="off" >
-
-                                @error('dni')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('dni') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
@@ -59,15 +41,9 @@
 
                         <div class="form-group row">
                             <label for="direccion" class="col-md-4 col-form-label text-md-right">Dirección</label>
-
                             <div class="col-md-6">
                                 <input id="direccion" type="text" maxlength="60" class="form-control @error('direccion') is-invalid @enderror" name="direccion" value="{{ $paciente->direccion }}" autocomplete="off">
-
-                                @error('direccion')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('direccion') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
@@ -87,15 +63,9 @@
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail</label>
-
                             <div class="col-md-6">
                                 <input id="email" type="email" maxlength="45" class="form-control @error('email') is-invalid @enderror" name="email" autocomplete="off" value="{{ $paciente->email }}">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('email') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
@@ -103,29 +73,17 @@
 
                         <div class="form-group row">
                             <label for="fechanacimiento" class="col-md-4 col-form-label text-md-right">Fecha de nacimiento</label>
-
                             <div class="col-md-6">
                                 <input id="fechanacimiento" type="date" class="form-control @error('fechanacimiento') is-invalid @enderror" name="fechanacimiento" value="{{$paciente->fechanacimiento}}">
-
-                                @error('fechanacimiento')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('fechanacimiento') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="ocupacion" class="col-md-4 col-form-label text-md-right">Ocupación</label>
-
                             <div class="col-md-6">
                                 <input id="ocupacion" type="text" maxlength="60" class="form-control @error('ocupacion') is-invalid @enderror" name="ocupacion" value="{{ $paciente->ocupacion }}" autocomplete="off">
-
-                                @error('ocupacion')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('ocupacion') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
@@ -141,11 +99,7 @@
                                     <option value="Divorciado">Divorciado</option>
                                     <option value="Otro">Otro</option>
                                 </select>
-                                @error('estado_civil')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('estado_civil') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                             
                             <label for="genero" class="col-form-label text-md">Género</label>
@@ -157,53 +111,31 @@
                                     <option value="F">F</option>
                                     <option value="O">O</option>
                                 </select>
-                                @error('genero')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('genero') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="cobertura" class="col-md-4 col-form-label text-md-right">Cobertura médica</label>
-
                             <div class="col-md-6">
                                 <input id="cobertura" type="text" maxlength="100" class="form-control @error('cobertura') is-invalid @enderror" name="cobertura" value="{{ $paciente->cobertura }}">
-
-                                @error('cobertura')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('cobertura') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="detalles" class="col-md-4 col-form-label text-md-right">Detalles</label>
-
                             <div class="col-md-6">
                                 <input id="detalles" type="text" maxlength="100" class="form-control @error('detalles') is-invalid @enderror" name="detalles" value="{{ $paciente->detalles }}" autocomplete="off">
-
-                                @error('detalles')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('detalles') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="comentarios" class="col-md-4 col-form-label text-md-right">Comentario</label>
-
                             <div class="col-md-6">
                                 <input id="comentarios" type="text" maxlength="40" class="form-control @error('comentarios') is-invalid @enderror" name="comentarios" value="{{ $paciente->comentarios }}" autocomplete="off">
-
-                                @error('comentarios')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('comentarios') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 

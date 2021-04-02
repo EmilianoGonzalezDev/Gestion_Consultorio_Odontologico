@@ -31,15 +31,9 @@
                         
                         <div class="form-group row">
                             <label for="cantidad" class="col-md-4 col-form-label text-md-right">Cantidad a quitar*</label>
-
                             <div class="col-md-6">
                                 <input id="cantidad" type="number" min="1" max="{{$insumo->stock}}" class="form-control @error('cantidad') is-invalid @enderror" name="cantidad" value="{{ $insumo->cantidad }}" required autocomplete="cantidad" autofocus>
-
-                                @error('cantidad')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('cantidad') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
                        

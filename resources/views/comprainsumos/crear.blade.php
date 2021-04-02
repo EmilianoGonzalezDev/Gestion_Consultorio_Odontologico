@@ -44,43 +44,25 @@
 
                         <div class="form-group row">
                             <label for="fecha_compra" class="col-md-4 col-form-label text-md-right">Fecha de compra</label>
-
                             <div class="col-md-6">
                                 <input id="fecha_compra" type="date" class="form-control @error('fecha_compra') is-invalid @enderror" name="fecha_compra" value="<?php echo date("Y-m-d"); ?>">
-
-                                @error('fecha_compra')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('fecha_compra') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="cantidad_adquirida" class="col-md-4 col-form-label text-md-right">Cantidad Adquirida</label>
-
                             <div class="col-md-6">
                                 <input id="cantidad_adquirida" type="number" min="0" max="999999" class="form-control @error('cantidad_adquirida') is-invalid @enderror" name="cantidad_adquirida" value="{{ old('cantidad_adquirida') }}" required autocomplete="cantidad_adquirida" >
-
-                                @error('cantidad_adquirida')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('cantidad_adquirida') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="precio_compra" class="col-md-4 col-form-label text-md-right">Precio de Compra $</label>
-
                             <div class="col-md-6">
                                 <input id="precio_compra" type="number" step="any" min="0" max="999999" class="form-control @error('precio_compra') is-invalid @enderror" name="precio_compra" value="{{ old('precio_compra') }}" required autocomplete="precio_compra" >
-
-                                @error('precio_compra')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @error('precio_compra') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
 
