@@ -16,15 +16,9 @@
 
                         <div class="form-group row">
                             <label for="usuario" class="col-md-4 col-form-label text-md-right">{{ __('Usuario') }} *</label>
-
                             <div class="col-md-6">
-                                <input id="usuario" type="text" maxlength="25" class="form-control @error('usuario') is-invalid @enderror" name="usuario" value="{{ old('usuario') }}" required autocomplete="usuario" autofocus>
-
-                                @error('usuario')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="usuario" type="text" maxlength="20" class="form-control @error('usuario') is-invalid @enderror" name="usuario" value="{{ old('usuario') }}" required autofocus>
+                                @error('usuario') <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>@enderror
                             </div>
                         </div>
 
