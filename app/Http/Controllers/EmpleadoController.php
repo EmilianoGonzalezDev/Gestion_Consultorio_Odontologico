@@ -22,7 +22,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = App\User::get(); //obtener todos los empleados 
+        $empleados = App\User::get();
         return view('empleados/index',compact('empleados'));
     }
 
@@ -116,11 +116,17 @@ class EmpleadoController extends Controller
     {
         $request->validate([
             'usuario' => ['required', 'string', 'max:20', 'unique:users,usuario,'.$id],
-            'password' => ['confirmed'],
-            'nombre' => ['required', 'string', 'max:40'],
-            'apellido' => ['required', 'string', 'max:40'],
+            'password' => ['string', 'min:6', 'max:25', 'confirmed'],
+            'nombre' => ['required', 'string', 'max:25'],
+            'apellido' => ['required', 'string', 'max:25'],
+            'dni' => ['required', 'integer', 'min:1000000', 'max:99999999','unique:users,dni,'.$id],
             'odontologo' => ['required', 'boolean'],
-            'dni' => ['required', 'max:40', 'unique:users,dni,'.$id],
+            'direccion' => ['nullable','string', 'max:60'],
+            'fechanacimiento' => ['nullable','date'],
+            'email' => ['nullable','email', 'max:45'],
+            'telefono' => ['nullable','string', 'max:20'],
+            'comentarios' => ['nullable','string', 'max:100'],
+            'rol' => ['nullable','integer', 'min:1', 'max:9'],
         ]);
         
         $empleado = App\User::withTrashed()->findOrFail($id);
@@ -159,12 +165,12 @@ class EmpleadoController extends Controller
     {
         $empleado = App\User::findOrFail($id);
         $empleado->eliminado_por = auth()->user()->usuario;
-        $empleado->save(); //para que guarde la información de quién lo eliminó
+        $empleado->save();
         $empleado->delete();
-        return back()->with("deleted" , $id ); //usa deleted para mostrar en la vista la opción de restaurarlo
+        return back()->with("deleted" , $id );
     }
 
-    public function restore($id) //restaurar un registro borrado
+    public function restore($id)
     {
         $empleado = App\User::withTrashed()->where('id', '=', $id)->first();
         $empleado->restore();  
@@ -173,7 +179,7 @@ class EmpleadoController extends Controller
 
     public function verEliminados()
     {  
-        $empleados = App\User::onlyTrashed()->get(); //obtener solo eliminados 
+        $empleados = App\User::onlyTrashed()->get();
         return view('empleados/eliminados',compact('empleados'));
     }
 }

@@ -25,7 +25,7 @@
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }} *</label>
                             <div class="col-md-6">
-                                <input id="password" type="password" maxlength="25" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="off" required>
+                                <input id="password" type="password" maxlength="25" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
                                 @error('password') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar contraseña') }} *</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" maxlength="25" class="form-control" name="password_confirmation" autocomplete="off" required>
+                                <input id="password-confirm" type="password" maxlength="25" class="form-control" name="password_confirmation">
                             </div>
                         </div>
 
@@ -58,7 +58,7 @@
                         <div class="form-group row">
                             <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('DNI') }} *</label>
                             <div class="col-md-6">
-                                <input id="dni" type="number" min="1000000" mas="99999999" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
+                                <input id="dni" type="number" min="1000000" max="99999999" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autofocus>
                                 @error('dni') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                         <div class="form-group row">
                             <label for="direccion" class="col-md-4 col-form-label text-md-right">{{ __('Dirección') }}</label>
                             <div class="col-md-6">
-                                <input id="direccion" type="text" maxlength="60" class="form-control @error('direccion') is-invalid @enderror" name="direccion" value="{{ old('direccion') }}">
+                                <input id="direccion" type="text" maxlength="60" class="form-control @error('direccion') is-invalid @enderror" name="direccion" autocomplete="off" value="{{ old('direccion') }}">
                                 @error('direccion') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" maxlength="45" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" maxlength="45" class="form-control @error('email') is-invalid @enderror" name="email" autocomplete="new-text" value="{{ old('email') }}">
                                 @error('email') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                         <div class="form-group row">
                             <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Teléfono') }}</label>
                             <div class="col-md-6">
-                                <input id="telefono" type="text" maxlength="20" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}">
+                                <input id="telefono" type="text" maxlength="20" class="form-control @error('telefono') is-invalid @enderror" name="telefono" autocomplete="new-text" value="{{ old('telefono') }}">
                                 @error('telefono') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                         <div class="form-group row">
                             <label for="comentarios" class="col-md-4 col-form-label text-md-right">{{ __('Comentarios') }}</label>
                             <div class="col-md-6">
-                                <input id="comentarios" type="text" maxlength="100" class="form-control @error('comentarios') is-invalid @enderror" name="comentarios" value="{{ old('comentarios') }}">
+                                <input id="comentarios" type="text" maxlength="100" class="form-control @error('comentarios') is-invalid @enderror" name="comentarios" autocomplete="off" value="{{ old('comentarios') }}">
                                 @error('comentarios') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
                         </div>
