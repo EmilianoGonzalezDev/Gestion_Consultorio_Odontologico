@@ -20,7 +20,7 @@ class AtencionController extends Controller
         $this->middleware('auth');
     }
 
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +29,7 @@ class AtencionController extends Controller
     public function index()
     {
         $atenciones = app\Atencion::get(); //obtener todos los atenciones      
-        return view('atenciones/index',compact('atenciones'));
+        return view('atenciones/index', compact('atenciones'));
     }
 
     /**
@@ -42,14 +42,14 @@ class AtencionController extends Controller
         //$empleados = App\User::orderBy('nombre')->get();
         $empleados = App\User::get();
         $pacientes = App\Paciente::get();
-        return view('atenciones/crear',compact('empleados','pacientes'));
+        return view('atenciones/crear', compact('empleados', 'pacientes'));
     }
 
     public function createByID($id)
-    {        
+    {
         $empleados = App\User::get();
         $paciente = App\Paciente::findOrFail($id);
-        return view('atenciones/crear',compact('empleados','paciente'));
+        return view('atenciones/crear', compact('empleados', 'paciente'));
     }
 
     /**
@@ -60,29 +60,41 @@ class AtencionController extends Controller
      */
     public function store(Request $request)
     {
-        /*$request->validate([
-            'empleado_id' => 'required',
-            'paciente_id' => 'required',
-        ]);*/
-        
+        $request->validate([
+            'user_id' => ['required', 'integer'],
+            'paciente_id' => ['required', 'integer'],
+            'arcada_superior' => ['nullable', 'string', 'max:40'],
+            'arcada_inferior' => ['nullable', 'string', 'max:40'],
+            'operacion_prevista' => ['nullable', 'string', 'max:40'],
+            'importe' => ['nullable', 'integer', 'min:0', 'max:999999'],
+            'pago' => ['nullable', 'integer', 'min:0', 'max:999999'], //To-Do: limitarlo (menos que importe)
+            'cubierto_obra_social' => ['required', 'boolean'],
+            'detalle' => ['nullable', 'string', 'max:40'],
+            'fecha' => ['required','date'],
+            'hora' => ['required','string'],
+            'proximo_turno' => ['nullable','date'],
+        ]);
+
         $atencionNuevo = new app\Atencion; //crea nueva instancia de atencion
         $atencionNuevo->user_id = $request->user_id; //guarda lo del formulario
         $atencionNuevo->paciente_id = $request->paciente_id;
         $atencionNuevo->arcada_superior = $request->arcada_superior;
         $atencionNuevo->arcada_inferior = $request->arcada_inferior;
         $atencionNuevo->operacion_prevista = $request->operacion_prevista;
-        if($request->importe) {$atencionNuevo->importe = $request->importe;}
-        else {$atencionNuevo->importe = 0;}
-        $atencionNuevo->pago = 0; //luego se aumenta con la función nuevoPago()
+        if ($request->importe) {
+            $atencionNuevo->importe = $request->importe;
+        } else {
+            $atencionNuevo->importe = 0;
+        }
+        $atencionNuevo->pago = 0; //luego se aumenta con la función guardarPago()
         $atencionNuevo->fecha = $request->fecha;
-        $atencionNuevo->hora = $request->hora; 
+        $atencionNuevo->hora = $request->hora;
         $atencionNuevo->proximo_turno = $request->proximo_turno;
         $atencionNuevo->creado_por = auth()->user()->usuario;
         $atencionNuevo->save();
 
         //Guardar Pago
-        if($request->monto > 0)
-        {
+        if ($request->monto > 0) {
             $request->atencion_id = $atencionNuevo->id;
             $this->guardarPago($request);
         }
@@ -102,7 +114,7 @@ class AtencionController extends Controller
         $paciente = App\Paciente::withTrashed()->findOrFail($atencion->paciente_id);
         $profesional = App\User::withTrashed()->findOrFail($atencion->user_id);
         $pagos = App\Pago::get()->where('atencion_id', '=', $id);
-        return view('atenciones/detalles',compact('atencion','paciente','profesional','pagos'));
+        return view('atenciones/detalles', compact('atencion', 'paciente', 'profesional', 'pagos'));
     }
 
     /**
@@ -114,7 +126,7 @@ class AtencionController extends Controller
     public function edit($id)
     {
         $atencion = App\Atencion::findOrFail($id); //no es withTrashed()
-        return view('atenciones/editar',compact('atencion'));
+        return view('atenciones/editar', compact('atencion'));
     }
 
     /**
@@ -127,7 +139,7 @@ class AtencionController extends Controller
     public function update(Request $request, $id)
     {
         $atencion = App\Atencion::findOrFail($id); //no es withTrashed()
-        
+
         $atencion->arcada_superior = $request->arcada_superior;
         $atencion->arcada_inferior = $request->arcada_inferior;
         $atencion->operacion_prevista = $request->operacion_prevista;
@@ -150,7 +162,7 @@ class AtencionController extends Controller
         $atencion->eliminado_por = auth()->user()->usuario;
         $atencion->save(); //para que guarde la información de quién lo eliminó
         $atencion->delete();
-        return back()->with("deleted" , $id ); //usa deleted para mostrar en la vista la opción de restaurarlo
+        return back()->with("deleted", $id); //usa deleted para mostrar en la vista la opción de restaurarlo
     }
 
     public function restore($id) //restaurar un registro borrado
@@ -161,39 +173,49 @@ class AtencionController extends Controller
         //Restauramos el registro
         $atencion->eliminado_por = null;
         $atencion->restore();
-  
+
         return back()->with('mensaje', 'registro restaurado correctamente');
     }
 
     public function verEliminados()
-    {  
+    {
         $atenciones = App\Atencion::onlyTrashed()->get(); //con trashed da error, debe ser porque se usa find()
-        return view('atenciones/eliminados',compact('atenciones'));
+        return view('atenciones/eliminados', compact('atenciones'));
     }
 
     public function nuevoPago($id)
-    {  
+    {
         $atencion = App\Atencion::findOrFail($id);
         $paciente = App\Paciente::findOrFail($atencion->paciente_id);
-        return view('atenciones/nuevopago',compact('atencion','paciente'));
+        return view('atenciones/nuevopago', compact('atencion', 'paciente'));
     }
 
     public function guardarPago(Request $request)
-    {  
+    {
         $pagoNuevo = new app\Pago; //crea nueva instancia de pago
         $pagoNuevo->atencion_id = $request->atencion_id;
         //$pagoNuevo->monto = $request->monto;
 
         $pagoNuevo->detalle = $request->detalle;
 
-        if($request->monto) {$pagoNuevo->monto = $request->monto;}
-        else {$pagoNuevo->monto = 0;}
-        
-        if ($request->cubierto_obra_social) {$pagoNuevo->cubierto_obra_social = true; } //Si se selecciona el checkbox
-        else {$pagoNuevo->cubierto_obra_social = false;} //Si NO se selecciona el checkbox
-        
-        if ($request->fecha) {$pagoNuevo->fecha = $request->fecha;}
-        else {$pagoNuevo->fecha = Carbon::today();}
+        if ($request->monto) {
+            $pagoNuevo->monto = $request->monto;
+        } else {
+            $pagoNuevo->monto = 0;
+        }
+
+        if ($request->cubierto_obra_social) {
+            $pagoNuevo->cubierto_obra_social = true;
+        } //Si se selecciona el checkbox
+        else {
+            $pagoNuevo->cubierto_obra_social = false;
+        } //Si NO se selecciona el checkbox
+
+        if ($request->fecha) {
+            $pagoNuevo->fecha = $request->fecha;
+        } else {
+            $pagoNuevo->fecha = Carbon::today();
+        }
 
         $pagoNuevo->creado_por = auth()->user()->usuario;
         $pagoNuevo->save();
@@ -206,7 +228,7 @@ class AtencionController extends Controller
     }
 
     public function eliminarPago($id)
-    {  
+    {
         $pago = App\Pago::findOrFail($id);
         $pago->eliminado_por = auth()->user()->usuario;
         $pago->save();
@@ -216,19 +238,19 @@ class AtencionController extends Controller
         $atencion->pago -= $pago->monto;
         $atencion->save();
 
-        return back()->with("deleted" , $id ); //usa deleted para mostrar en la vista la opción de restaurarlo
+        return back()->with("deleted", $id); //usa deleted para mostrar en la vista la opción de restaurarlo
     }
 
     public function restaurarPago($id)
-    {  
-           $pago = App\Pago::withTrashed()->where('id', '=', $id)->first();
-           $pago->eliminado_por = null;
-           $pago->restore();
+    {
+        $pago = App\Pago::withTrashed()->where('id', '=', $id)->first();
+        $pago->eliminado_por = null;
+        $pago->restore();
 
-            $atencion = App\Atencion::findOrFail($pago->atencion_id);
-            $atencion->pago += $pago->monto;
-            $atencion->save();
-     
-           return back()->with('mensaje', 'pago restaurado correctamente');
+        $atencion = App\Atencion::findOrFail($pago->atencion_id);
+        $atencion->pago += $pago->monto;
+        $atencion->save();
+
+        return back()->with('mensaje', 'pago restaurado correctamente');
     }
 }

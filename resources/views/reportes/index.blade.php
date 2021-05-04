@@ -15,29 +15,17 @@
                                 
                                 <div class="form-group row">
                                     <label for="fechanainicial" class="col-md-4 col-form-label text-md-right">Desde</label>
-
                                     <div class="col-md-6">
                                         <input id="fechanainicial" type="date" class="form-control @error('fechanainicial') is-invalid @enderror" name="fechanainicial" value={{\Carbon\Carbon::today()->sub('1 month')}} required>
-
-                                        @error('fechanainicial')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        @error('fechanainicial') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                                     </div>
                                 </div> 
 
                                 <div class="form-group row">
                                     <label for="fechafinal" class="col-md-4 col-form-label text-md-right">Hasta</label>
-
                                     <div class="col-md-6">
                                         <input id="fechafinal" type="date" class="form-control @error('fechafinal') is-invalid @enderror" name="fechafinal" value="<?php echo date("Y-m-d"); ?>" required>
-
-                                        @error('fechafinal')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        @error('fechafinal') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                                     </div>
                                 </div>                                    
                                     <div class="col-md-6 offset-md-4">

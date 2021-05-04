@@ -116,7 +116,7 @@ class EmpleadoController extends Controller
     {
         $request->validate([
             'usuario' => ['required', 'string', 'max:20', 'unique:users,usuario,'.$id],
-            'password' => ['string', 'min:6', 'max:25', 'confirmed'],
+            'password' => ['nullable','string', 'min:6', 'max:25', 'confirmed'],
             'nombre' => ['required', 'string', 'max:25'],
             'apellido' => ['required', 'string', 'max:25'],
             'dni' => ['required', 'integer', 'min:1000000', 'max:99999999','unique:users,dni,'.$id],
