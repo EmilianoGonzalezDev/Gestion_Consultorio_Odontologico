@@ -36,7 +36,6 @@
                 <th>DNI</th>
                 <th>Teléfono</th>
                 <th>Odont.</th>
-                <th>E-mail</th>
                 <th>Rol</th>
                 <th>Acciones</th>
             </tr>
@@ -55,7 +54,6 @@
                 <td>{{$empleado->dni}}</td>
                 <td>{{$empleado->telefono}}</td>
                 <td>@if($empleado->odontologo) Si @else No @endif</td>
-                <td>{{$empleado->email}}</td>
                 <td>{{$empleado->rol}}</td>
                 <td>
                     <div class="btn-group-sm dt-col-nowrap" role="group" aria-label="Basic example">

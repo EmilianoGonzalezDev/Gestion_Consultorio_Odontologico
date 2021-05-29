@@ -9,7 +9,7 @@
                 @if ($insumo->stock <= $insumo->stock_bajo)
                     <tr>
                         <td><a href="{{route('insumos.show', $insumo) }}" target="_blank"> PRODUCTO #{{$insumo->id}}</a> |</td>
-                        <td style="text-transform: uppercase;">{{$insumo->nombre}} {{$insumo->marca}} x {{$insumo->contenido_cantidad}}{{$insumo->contenido_unidad}} {{$insumo->detalles }}</td>
+                        <td style="text-transform: uppercase;">{{$insumo->nombre}} {{$insumo->marca}} {{$insumo->detalles }} x {{$insumo->contenido_cantidad}} {{$insumo->contenido_unidad}} </td>
                         <td>|  Stock Mínimo: {{$insumo->stock_bajo }}   |</td>
                         <td>Stock Actual: <i style="color:red;">{{$insumo->stock }}</i>
                         </td>

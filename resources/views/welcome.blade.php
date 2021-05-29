@@ -77,7 +77,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Sistema Odontología Haenggi
+                   <p>I.M.O. "DA VINCI"</p>
+                   <p>Consultorio Odontológico</p>
                 </div>
 
                 <div class="links">

@@ -2,13 +2,6 @@
 
 @section('content')
 
-@if ( session('mensaje') ) {{-- Si se crea OK! lo informa --}}
-<div class="alert alert-success">
-    <a href="{{ route('insumos.index') }}" class="btn btn-success btn-sm" role="button">Volver</a>
-    {{ session('mensaje') }}
-</div>
-@endif
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

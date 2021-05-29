@@ -62,7 +62,7 @@
                 @foreach ($compras as $compra)
                             <tr>
                                 <th scope="row">{{$compra->id}}</th>
-                                <th>{{$compra->fecha_compra->formatLocalized('%d/%m/%Y %H:%M')}}</th>
+                                <th>{{$compra->fecha_compra->formatLocalized('%d/%m/%Y')}}</th>
                                 <th>{{$compra->cantidad_adquirida}}</th>
                                 <th>{{$compra->precio_compra}}</th>
                                 <th>{{$compra->creado_por}}</th>

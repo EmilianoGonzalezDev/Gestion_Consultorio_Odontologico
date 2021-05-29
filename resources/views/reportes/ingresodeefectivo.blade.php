@@ -1,4 +1,4 @@
-@include('layouts.styles') <!-- Incluye los estilos -->
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 <div class="container my-4">
     <div class="card-body">

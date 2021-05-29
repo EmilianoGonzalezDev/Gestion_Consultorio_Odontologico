@@ -105,7 +105,7 @@
                     </tr>
                     <tr>
                         <td><b> Tratamiento: </b></td>
-                        <td> {{$ortodoncia->tratamiento}} </td>
+                        <td> {{$ortodoncia->plan_tratamiento}} </td>
                     </tr>
                     <tr>
                         <td><b> Aparatología: </b></td>
@@ -159,17 +159,17 @@
             <tbody>
                 @foreach ($atenciones as $atencion)
                 <tr>
-                    <th scope="row">{{$atencion->id}}</th>
-                    <th>{{App\User::empleado($atencion->user_id)->nombre}} {{App\User::empleado($atencion->user_id)->apellido}}</th>
-                    <th>{{$atencion->arcada_superior}}</th>
-                    <th>{{$atencion->arcada_inferior}}</th>
-                    <th>{{$atencion->operacion_prevista}}</th>
-                    <th>{{$atencion->importe}}</th>
-                    <th>{{$atencion->pago}}</th>
-                    <th>{{$atencion->detalle}}</th>
-                    <th>{{$atencion->importe - $atencion->pago}}</th>
-                    <th>{{$atencion->fecha->formatLocalized('%d/%m/%Y')}} {{$atencion->hora}}</th>
-                    <th>{{$atencion->proximo_turno}}</th>
+                    <th scope="row">{{$atencion->id}}</td>
+                    <td>{{App\User::empleado($atencion->user_id)->nombre}} {{App\User::empleado($atencion->user_id)->apellido}}</td>
+                    <td>{{$atencion->arcada_superior}}</td>
+                    <td>{{$atencion->arcada_inferior}}</td>
+                    <td>{{$atencion->operacion_prevista}}</td>
+                    <td>{{$atencion->importe}}</td>
+                    <td>{{$atencion->pago}}</td>
+                    <td>{{$atencion->detalle}}</td>
+                    <td>{{$atencion->importe - $atencion->pago}}</td>
+                    <td>{{$atencion->fecha->formatLocalized('%d/%m/%Y')}} {{$atencion->hora}}</td>
+                    <td>{{$atencion->proximo_turno}}</td>
                 </tr>
                 @endforeach
             </tbody>

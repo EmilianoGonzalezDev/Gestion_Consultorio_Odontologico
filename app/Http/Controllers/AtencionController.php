@@ -68,7 +68,7 @@ class AtencionController extends Controller
             'operacion_prevista' => ['nullable', 'string', 'max:40'],
             'importe' => ['nullable', 'integer', 'min:0', 'max:999999'],
             'pago' => ['nullable', 'integer', 'min:0', 'max:999999'], //To-Do: limitarlo (menos que importe)
-            'cubierto_obra_social' => ['required', 'boolean'],
+            //'cubierto_obra_social' => ['required', 'boolean'],
             'detalle' => ['nullable', 'string', 'max:40'],
             'fecha' => ['required','date'],
             'hora' => ['required','string'],

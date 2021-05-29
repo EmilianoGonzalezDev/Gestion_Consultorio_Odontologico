@@ -94,7 +94,6 @@
                                     <option value=""></option>
                                     <option value="Soltero">Soltero</option>
                                     <option value="Casado">Casado</option>
-                                    <option value="Casado">Separado</option>
                                     <option value="Divorciado">Divorciado</option>
                                     <option value="Divorciado">Otro</option>
                                 </select>

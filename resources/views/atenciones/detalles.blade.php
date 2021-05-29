@@ -107,20 +107,20 @@
         <tbody>
             @foreach ($pagos as $pago)
             <tr>
-                <th scope="row">{{$pago->id}}</th>
-                <th>{{\Carbon\Carbon::parse($pago->fecha)->formatLocalized('%d/%m/%Y')}}</th>
-                <th>${{$pago->monto}}</th>
-                <th>{{$pago->detalle}}</th>
+                <td scope="row">{{$pago->id}}</td>
+                <td>{{\Carbon\Carbon::parse($pago->fecha)->formatLocalized('%d/%m/%Y')}}</td>
+                <td>${{$pago->monto}}</td>
+                <td>{{$pago->detalle}}</td>
                 <td>@if ($pago->cubierto_obra_social) Si @else No @endif</td>
-                <th>{{$pago->creado_por}}</th>
-                <th>{{$pago->created_at->formatLocalized('%d/%m/%Y %H:%M')}}</th>
-                <th>
+                <td>{{$pago->creado_por}}</td>
+                <td>{{$pago->created_at->formatLocalized('%d/%m/%Y %H:%M')}}</td>
+                <td>
                     <form action="{{ route('atenciones.eliminarPago', $pago) }}" method="POST" class="d-inline">
                         @method('DELETE')
                         @csrf
                         <input type=button class="btn btn-danger btn-sm btn-group" value="Eliminar" onclick="if (confirm('Se eliminará el pago ¿Continuar?')){this.form.submit();}" />
                     </form>
-                </th>
+                </td>
             </tr>
             @endforeach
         </tbody>

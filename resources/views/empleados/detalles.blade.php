@@ -22,6 +22,7 @@
                 <tr><td><b>Dirección:</b></td><td>  {{ $empleado->direccion }}</td></tr>
                 <tr><td><b>Nacimiento:</b></td><td>  @if($empleado->fechanacimiento) {{ \Carbon\Carbon::parse($empleado->fechanacimiento)->formatLocalized('%d/%m/%Y')}} @endif</td></tr>
                 <tr><td><b>Edad:</b></td><td>   @if($empleado->fechanacimiento) {{ \Carbon\Carbon::parse($empleado->fechanacimiento)->age }} @endif</td></tr>
+                <tr><td><b>E-Mail:</b></td><td> {{ $empleado->email }}</td></tr>
                 <tr><td><b>Comentarios:</b></td><td> {{ $empleado->comentarios }}</td></tr>
             </table>
             <br><i><b>Creado:</b> {{ $empleado->created_at->formatLocalized('%d/%m/%Y %H:%M') }} por {{ $empleado->creado_por }}</i>
