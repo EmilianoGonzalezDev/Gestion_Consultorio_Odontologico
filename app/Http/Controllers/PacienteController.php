@@ -21,10 +21,7 @@ class PacienteController extends Controller
      */
     public function index()
     {  
-        //En la variable $pacientes guarda toda la tabla paciente de BD
-        $pacientes = App\Paciente::get(); //obtener todos los pacientes
-        //App\Paciente se refiere al modelo paciente el cual está dentro de la carpeta App
-        
+        $pacientes = App\Paciente::get();        
         return view('pacientes/index',compact('pacientes'));
     }
 

@@ -60,6 +60,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('insumos.index') }}">Insumos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('comprainsumos.index') }}">Compras</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('ortodoncias.index') }}">Fichas Ort</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('nomeclaturas.index') }}">Nomeclaturas</a></li>
                         @auth
                         @if (auth()->user()->rol == 1)
                         <li class="nav-item"><a class="nav-link" href="{{ route('reportes.index') }}">Reportes</a></li>

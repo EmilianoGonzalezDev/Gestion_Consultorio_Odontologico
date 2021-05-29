@@ -61,6 +61,9 @@ Route::delete('/atenciones/eliminarpago/{id}', ['as' =>  'atenciones.eliminarPag
 Route::get('/atenciones/restaurarpago/{id}', ['as' =>  'atenciones.restaurarPago', 'uses' => 'AtencionController@restaurarPago']);
 Route::get('atenciones/createByID/{id}', ['as' =>  'atenciones.createByID', 'uses' => 'AtencionController@createByID']);
 
+/* NOMECLATURAS*/
+Route::resource('/nomeclaturas', 'NomeclaturaController');
+
 /* REPORTES */
 Route::get('/reportes/index', ['as' =>  'reportes.index', 'uses' => 'ReporteController@index']);
 Route::get('reportes.exportInsumosBajoStock', ['as' =>  'reportes.insumosbajostock', 'uses' => 'ReporteController@exportInsumosBajoStock']);
