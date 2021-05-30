@@ -47,18 +47,10 @@
                         <td><b>Fecha:</b></td>
                         <td> {{ $atencion->fecha->formatLocalized('%d/%m/%Y') }} {{\Carbon\Carbon::parse($atencion->hora)->formatLocalized('%H:%M')}}</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td><b>Arcada superior:</b></td>
                         <td> {{ $atencion->arcada_superior }}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Arcada inferior:</b></td>
-                        <td> {{ $atencion->arcada_inferior }}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Operación prevista:</b></td>
-                        <td> {{ $atencion->operacion_prevista }}</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td><b>Importe:</b></td>
                         <td> ${{ $atencion->importe }}</td>

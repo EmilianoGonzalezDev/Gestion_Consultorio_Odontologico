@@ -17,9 +17,6 @@ class CreateAtencionesTable extends Migration
             $table->bigIncrements('id');
             $table->biginteger('user_id')->unsigned();
             $table->biginteger('paciente_id')->unsigned();
-            $table->string('arcada_superior')->nullable();
-            $table->string('arcada_inferior')->nullable();
-            $table->string('operacion_prevista')->nullable();
             $table->float('importe');
             $table->float('pago');
             $table->date('fecha');

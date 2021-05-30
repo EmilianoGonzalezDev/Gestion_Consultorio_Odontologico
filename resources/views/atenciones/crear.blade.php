@@ -43,45 +43,8 @@
                                         @foreach ($pacientes as $paciente)
                                         <option value="{{$paciente->id}}">{{$paciente->nombre}} {{$paciente->apellido}} - cód. {{$paciente->id}}</option>
                                         @endforeach
-                                   
                                     @endif
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="arcada_superior" class="col-md-4 col-form-label text-md-right">Arcada Superior</label>
-                            <div class="col-md-6">
-                                <input id="arcada_superior" type="text" maxlength="40" class="form-control @error('arcada_superior') is-invalid @enderror" name="arcada_superior" value="{{ old('arcada_superior') }}" autocomplete="off">
-                                @error('arcada_superior')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="arcada_inferior" class="col-md-4 col-form-label text-md-right">Arcada Inferior</label>
-                            <div class="col-md-6">
-                                <input id="arcada_inferior" type="text" maxlength="40" class="form-control @error('arcada_inferior') is-invalid @enderror" name="arcada_inferior" value="{{ old('arcada_inferior') }}" autocomplete="off">
-                                @error('arcada_inferior')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="operacion_prevista" class="col-md-4 col-form-label text-md-right">Operación Prevista</label>
-                            <div class="col-md-6">
-                                <input id="operacion_prevista" type="text" maxlength="40" class="form-control @error('operacion_prevista') is-invalid @enderror" name="operacion_prevista" value="{{ old('operacion_prevista') }}" autocomplete="off">
-                                @error('operacion_prevista')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -164,6 +127,21 @@
                                 </span>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <form action="">
+                                <label for="nomeclaturas_select" class="col-md-4 col-form-label text-md-right">Servicios Prestados</label>
+                                <div class="select col-md-6">
+                                    <select name="nomeclaturas_select" id="nomeclaturas_select" class="form-control" required>
+                                        <option value=""></option>
+                                        @foreach ($nomeclaturas as $nomeclatura)
+                                        <option value="{{$nomeclatura->id}}">{{$nomeclatura->nomeclatura}} - {{$nomeclatura->descripcion}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                    <input type="button" class="btn btn-outline-success btn-sm" id="btn-agregar" value="Agregar">
+                            </form>
                         </div>
 
                         <div class="form-group row mb-0">

@@ -8,6 +8,7 @@ use App\User;
 use App\Paciente;
 use App\Insumo;
 use App\Pago;
+use App\Nomeclatura;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\ToArray;
 
@@ -42,14 +43,16 @@ class AtencionController extends Controller
         //$empleados = App\User::orderBy('nombre')->get();
         $empleados = App\User::get();
         $pacientes = App\Paciente::get();
-        return view('atenciones/crear', compact('empleados', 'pacientes'));
+        $nomeclaturas = App\Nomeclatura::orderBy('nomeclatura')->get();
+        return view('atenciones/crear', compact('empleados', 'pacientes','nomeclaturas'));
     }
 
     public function createByID($id)
     {
         $empleados = App\User::get();
         $paciente = App\Paciente::findOrFail($id);
-        return view('atenciones/crear', compact('empleados', 'paciente'));
+        $nomeclaturas = App\Nomeclatura::get();
+        return view('atenciones/crear', compact('empleados', 'paciente','nomeclaturas'));
     }
 
     /**
@@ -63,11 +66,9 @@ class AtencionController extends Controller
         $request->validate([
             'user_id' => ['required', 'integer'],
             'paciente_id' => ['required', 'integer'],
-            'arcada_superior' => ['nullable', 'string', 'max:40'],
-            'arcada_inferior' => ['nullable', 'string', 'max:40'],
-            'operacion_prevista' => ['nullable', 'string', 'max:40'],
             'importe' => ['nullable', 'integer', 'min:0', 'max:999999'],
             'pago' => ['nullable', 'integer', 'min:0', 'max:999999'], //To-Do: limitarlo (menos que importe)
+            //To-Do: *Nomeclaturas*
             //'cubierto_obra_social' => ['required', 'boolean'],
             'detalle' => ['nullable', 'string', 'max:40'],
             'fecha' => ['required','date'],
@@ -78,9 +79,7 @@ class AtencionController extends Controller
         $atencionNuevo = new app\Atencion; //crea nueva instancia de atencion
         $atencionNuevo->user_id = $request->user_id; //guarda lo del formulario
         $atencionNuevo->paciente_id = $request->paciente_id;
-        $atencionNuevo->arcada_superior = $request->arcada_superior;
-        $atencionNuevo->arcada_inferior = $request->arcada_inferior;
-        $atencionNuevo->operacion_prevista = $request->operacion_prevista;
+        //To-Do: Guardar Listado de Serviciosprestados (Nomeclaturas)
         if ($request->importe) {
             $atencionNuevo->importe = $request->importe;
         } else {
@@ -139,10 +138,7 @@ class AtencionController extends Controller
     public function update(Request $request, $id)
     {
         $atencion = App\Atencion::findOrFail($id); //no es withTrashed()
-
-        $atencion->arcada_superior = $request->arcada_superior;
-        $atencion->arcada_inferior = $request->arcada_inferior;
-        $atencion->operacion_prevista = $request->operacion_prevista;
+        //To-Do: Editar nomeclaturas/servicios prestados
         $atencion->proximo_turno = $request->proximo_turno;
         $atencion->editado_por = auth()->user()->usuario;
         $atencion->save();
@@ -167,10 +163,8 @@ class AtencionController extends Controller
 
     public function restore($id) //restaurar un registro borrado
     {
-        //Indicamos que la busqueda se haga en los registros eliminados con withTrashed
         $atencion = App\Atencion::withTrashed()->where('id', '=', $id)->first();
         //$atencion = App\Atencion::findOrFail($id);
-        //Restauramos el registro
         $atencion->eliminado_por = null;
         $atencion->restore();
 
@@ -179,7 +173,7 @@ class AtencionController extends Controller
 
     public function verEliminados()
     {
-        $atenciones = App\Atencion::onlyTrashed()->get(); //con trashed da error, debe ser porque se usa find()
+        $atenciones = App\Atencion::onlyTrashed()->get(); //con trashed da error
         return view('atenciones/eliminados', compact('atenciones'));
     }
 
