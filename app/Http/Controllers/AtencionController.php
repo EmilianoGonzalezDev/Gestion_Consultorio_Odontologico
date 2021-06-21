@@ -98,6 +98,12 @@ class AtencionController extends Controller
             $this->guardarPago($request);
         }
 
+        //Guardar Servicios prestados (nomeclaturas)
+        if (isset($request->serviciosPrestados))
+        {
+            $this->guardarServiciosPrestados($request->serviciosPrestados,$atencionNuevo->id);
+        }
+
         return back()->with('mensaje', 'Creado correctamente');
     }
 
@@ -246,5 +252,18 @@ class AtencionController extends Controller
         $atencion->save();
 
         return back()->with('mensaje', 'pago restaurado correctamente');
+    }
+
+    public function guardarServiciosPrestados($serviciosPrestados, $id_atencion)
+    {
+        $arrayServPrestados = explode(",", $serviciosPrestados); //ej: $serviciosPrestados => "2,3,5" //explode() separa los elementos, en este caso con el caracter ","
+
+        foreach($arrayServPrestados as $servicio_id)
+        {
+            $serviciosPrestadosNuevo = new app\ServicioPrestado;
+            $serviciosPrestadosNuevo->atencion_id = $id_atencion;
+            $serviciosPrestadosNuevo->nomeclatura_id = $servicio_id;
+            $serviciosPrestadosNuevo->save();
+        }
     }
 }

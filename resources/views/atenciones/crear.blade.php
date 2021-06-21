@@ -130,31 +130,32 @@
                         </div>
 
                         <div class="form-group row">
-                            <form action="">
-                                <label for="nomeclaturas_select" class="col-md-4 col-form-label text-md-right">Servicios Prestados</label>
-                                <div class="select col-md-6">
-                                    <select name="nomeclaturas_select" id="nomeclaturas_select" class="form-control" required>
-                                        <option value=""></option>
-                                        @foreach ($nomeclaturas as $nomeclatura)
-                                        <option value="{{$nomeclatura->id}}">{{$nomeclatura->nomeclatura}} - {{$nomeclatura->descripcion}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                    <input type="button" class="btn btn-outline-success btn-sm" id="btn-agregar" value="Agregar">
-                            </form>
+                            <label for="nomeclaturas_select" class="col-md-4 col-form-label text-md-right">Servicios Prestados</label>
+                            <div class="select col-md-6">
+                                <select name="nomeclaturas_select" id="nomeclaturas_select" class="form-control">
+                                    <option value=""></option>
+                                    @foreach ($nomeclaturas as $nomeclatura)
+                                    <option value="{{$nomeclatura->id}}">{{$nomeclatura->nomeclatura}} - {{$nomeclatura->descripcion}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <input type="button" id="btn_agregar_servicio" class="btn btn-outline-success btn-sm" value="Agregar">
+                        </div>
+
+                        <div id="div_servicios_prestados" class="col-md-12 offset-md-2"> 
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" id="btn_enviar" class="btn btn-primary">
                                     Enviar
                                 </button>
                                 <a href="{{ route('atenciones.index') }}" class="btn btn-secondary">Volver</a>
                             </div>
                         </div>
+
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
@@ -162,19 +163,66 @@
 
 
 <script>
-    $(document).ready(function() //Si el usuario actual es odontÃ³logo, lo pone automÃ¡ticamente en el select de crear atenciÃ³n
-        {
-            var selectEmpleado = document.getElementById('user_id');
-            if ({
-                    {
-                        Auth::user() - > odontologo
-                    }
-                }) selectEmpleado.value = {
-                {
-                    Auth::user() - > id
-                }
-            };
+/* Si el usuario actual es odontologo, colocarlo automaticamente en el select de crear atencion */
+    $(document).ready
+    (function(){
+        var selectEmpleado = document.getElementById('user_id');
+        if ({{ Auth::user()->odontologo }}) selectEmpleado.value = {{ Auth::user()->id }};
+    });
+</script>
+
+
+<script>
+
+/** Agregar dinámicamente servicios prestados y guardarlos en BD al enviar el formulario **/
+    var listaIdServiciosPrestados = new Array();
+    var botonEnviar = document.getElementById('btn_enviar');
+    var divServiciosPrestados = document.getElementById('div_servicios_prestados');
+    var botonAgregarServicio = document.getElementById('btn_agregar_servicio');
+        botonAgregarServicio.addEventListener("click", agregarServicioPrestado);
+
+    const   _inputServicios = document.createElement("input"); 
+            _inputServicios.type = "hidden";
+            _inputServicios.name = "serviciosPrestados";
+    divServiciosPrestados.appendChild(_inputServicios);
+
+    /* Crear lista de servicios prestados */
+    function agregarServicioPrestado(){
+        // Verificar si el servicio ya fue agregado o no
+        var listaServiciosPrestadosSpan = divServiciosPrestados.querySelectorAll('p');
+        var elementoNoExiste = true;
+        var idServicioAgregar = $("#nomeclaturas_select").val();
+        listaServiciosPrestadosSpan.forEach(function(servicioYaAgregado){
+            if(servicioYaAgregado.id == idServicioAgregar){
+                elementoNoExiste = false;
+            }
         });
+        
+        // Si el servicio no estaba agregado, agregar
+        if(elementoNoExiste && (idServicioAgregar != '')){
+            const pServicio = document.createElement("p");
+            var idNomeclatura = $("#nomeclaturas_select").val();
+            pServicio.id = idNomeclatura;
+            pServicio.className = "servicio-prestado"
+            pServicio.textContent = $("#nomeclaturas_select option:selected").text();
+            pServicio.addEventListener("mouseover", function () {this.style = "text-decoration: line-through; color: red";});
+            pServicio.addEventListener("mouseout", function () {this.style = "text-decoration: none";} );
+            pServicio.addEventListener("click", quitarServicioPrestado);
+            divServiciosPrestados.appendChild(pServicio);
+            listaIdServiciosPrestados.push(idNomeclatura);
+            _inputServicios.value = listaIdServiciosPrestados;         
+        }
+            $("#nomeclaturas_select").val("");
+    }
+        
+    function quitarServicioPrestado(){
+        this.parentNode.removeChild(this);
+        var idEliminar = this.id;
+        var nuevaLista = listaIdServiciosPrestados.filter( function(id){ return id !== idEliminar;} );
+        listaIdServiciosPrestados = nuevaLista;
+        _inputServicios.value = nuevaLista;
+    }
+    
 </script>
 
 @endsection
