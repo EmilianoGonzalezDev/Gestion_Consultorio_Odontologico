@@ -133,7 +133,7 @@
                             <label for="nomeclaturas_select" class="col-md-4 col-form-label text-md-right">Servicios Prestados</label>
                             <div class="select col-md-6">
                                 <select name="nomeclaturas_select" id="nomeclaturas_select" class="form-control">
-                                    <option value=""></option>
+                                    <option value="" selected></option>
                                     @foreach ($nomeclaturas as $nomeclatura)
                                     <option value="{{$nomeclatura->id}}">{{$nomeclatura->nomeclatura}} - {{$nomeclatura->descripcion}}</option>
                                     @endforeach
@@ -147,7 +147,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" id="btn_enviar" class="btn btn-primary">
+                                <button type="submit" id="btn_enviar" class="btn btn-primary" disabled>
                                     Enviar
                                 </button>
                                 <a href="{{ route('atenciones.index') }}" class="btn btn-secondary">Volver</a>
@@ -163,7 +163,7 @@
 
 
 <script>
-/* Si el usuario actual es odontologo, colocarlo automaticamente en el select de crear atencion */
+// Si el usuario actual es odontologo, colocarlo automaticamente en el select de crear atencion
     $(document).ready
     (function(){
         var selectEmpleado = document.getElementById('user_id');
@@ -173,46 +173,57 @@
 
 
 <script>
-
-/** Agregar dinámicamente servicios prestados y guardarlos en BD al enviar el formulario **/
+// Agregar dinámicamente servicios prestados y guardarlos en BD al enviar el formulario
     var listaIdServiciosPrestados = new Array();
     var botonEnviar = document.getElementById('btn_enviar');
     var divServiciosPrestados = document.getElementById('div_servicios_prestados');
-    var botonAgregarServicio = document.getElementById('btn_agregar_servicio');
-        botonAgregarServicio.addEventListener("click", agregarServicioPrestado);
+    var bAgregar = document.getElementById('btn_agregar_servicio');
+    const _inputServicios = document.createElement("input");  
+        _inputServicios.type = "hidden";
+        _inputServicios.name = "serviciosPrestados";
+        divServiciosPrestados.appendChild(_inputServicios);
+    bAgregar.addEventListener("click", agregarServicioPrestado);
 
-    const   _inputServicios = document.createElement("input"); 
-            _inputServicios.type = "hidden";
-            _inputServicios.name = "serviciosPrestados";
-    divServiciosPrestados.appendChild(_inputServicios);
-
-    /* Crear lista de servicios prestados */
     function agregarServicioPrestado(){
-        // Verificar si el servicio ya fue agregado o no
-        var listaServiciosPrestadosSpan = divServiciosPrestados.querySelectorAll('p');
-        var elementoNoExiste = true;
+        if(!servicioYaFueAgregado() && hayUnElementoSeleccionado()){
+            agregarServicio();
+        }
+        vaciarInputServicios();
+    }
+
+    function servicioYaFueAgregado(){
+        var listaServiciosPrestados = divServiciosPrestados.querySelectorAll('p');
+        var elementoExiste = false;
         var idServicioAgregar = $("#nomeclaturas_select").val();
-        listaServiciosPrestadosSpan.forEach(function(servicioYaAgregado){
+        listaServiciosPrestados.forEach(function(servicioYaAgregado){
             if(servicioYaAgregado.id == idServicioAgregar){
-                elementoNoExiste = false;
+                elementoExiste = true;
             }
         });
-        
-        // Si el servicio no estaba agregado, agregar
-        if(elementoNoExiste && (idServicioAgregar != '')){
-            const pServicio = document.createElement("p");
-            var idNomeclatura = $("#nomeclaturas_select").val();
-            pServicio.id = idNomeclatura;
-            pServicio.className = "servicio-prestado"
-            pServicio.textContent = $("#nomeclaturas_select option:selected").text();
-            pServicio.addEventListener("mouseover", function () {this.style = "text-decoration: line-through; color: red";});
-            pServicio.addEventListener("mouseout", function () {this.style = "text-decoration: none";} );
-            pServicio.addEventListener("click", quitarServicioPrestado);
-            divServiciosPrestados.appendChild(pServicio);
-            listaIdServiciosPrestados.push(idNomeclatura);
-            _inputServicios.value = listaIdServiciosPrestados;         
-        }
-            $("#nomeclaturas_select").val("");
+        return elementoExiste;
+    }
+
+    function hayUnElementoSeleccionado(){
+        return $("#nomeclaturas_select").val() != "";
+    }
+
+    function agregarServicio(){
+        const pServicio = document.createElement("p");
+        var idNomeclatura = $("#nomeclaturas_select").val();
+        pServicio.id = idNomeclatura;
+        pServicio.className = "servicio-prestado"
+        pServicio.textContent = $("#nomeclaturas_select option:selected").text();
+        pServicio.addEventListener("mouseover", function () {this.style = "text-decoration: line-through; color: red";});
+        pServicio.addEventListener("mouseout", function () {this.style = "text-decoration: none";} );
+        pServicio.addEventListener("click", quitarServicioPrestado);
+        divServiciosPrestados.appendChild(pServicio);
+        listaIdServiciosPrestados.push(idNomeclatura);
+        _inputServicios.value = listaIdServiciosPrestados;
+        botonEnviar.disabled = false;
+    }
+
+    function vaciarInputServicios(){
+        $("#nomeclaturas_select").val("");
     }
         
     function quitarServicioPrestado(){
@@ -221,6 +232,9 @@
         var nuevaLista = listaIdServiciosPrestados.filter( function(id){ return id !== idEliminar;} );
         listaIdServiciosPrestados = nuevaLista;
         _inputServicios.value = nuevaLista;
+        if(_inputServicios.value == ""){
+            botonEnviar.disabled = true;
+        }
     }
     
 </script>
