@@ -119,7 +119,8 @@ class AtencionController extends Controller
         $paciente = App\Paciente::withTrashed()->findOrFail($atencion->paciente_id);
         $profesional = App\User::withTrashed()->findOrFail($atencion->user_id);
         $pagos = App\Pago::get()->where('atencion_id', '=', $id);
-        return view('atenciones/detalles', compact('atencion', 'paciente', 'profesional', 'pagos'));
+        $serviciosPrestados = $atencion->nomeclaturas;
+        return view('atenciones/detalles', compact('atencion', 'paciente', 'profesional', 'pagos','serviciosPrestados'));
     }
 
     /**

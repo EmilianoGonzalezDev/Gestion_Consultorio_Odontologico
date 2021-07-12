@@ -13,6 +13,11 @@ class Atencion extends Model
 
     protected $table = 'atenciones'; //en este caso es necesaria esta línea porque de lo contrario buscaría la tabla "atencions" y daría error
 
+    public function nomeclaturas()
+    {
+        return $this->belongsToMany('App\Nomeclatura','servicio_prestados','atencion_id','nomeclatura_id');
+    }
+
     /*public function user() //esto andaba para buscar con find() pero daba error en la lista de eliminados, y tambien si se eliminaba un paciente
     {
         return $this->belongsTo('App\User');

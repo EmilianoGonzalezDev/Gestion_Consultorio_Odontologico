@@ -47,10 +47,6 @@
                         <td><b>Fecha:</b></td>
                         <td> {{ $atencion->fecha->formatLocalized('%d/%m/%Y') }} {{\Carbon\Carbon::parse($atencion->hora)->formatLocalized('%H:%M')}}</td>
                     </tr>
-                    <!-- <tr>
-                        <td><b>Arcada superior:</b></td>
-                        <td> {{ $atencion->arcada_superior }}</td>
-                    </tr> -->
                     <tr>
                         <td><b>Importe:</b></td>
                         <td> ${{ $atencion->importe }}</td>
@@ -68,6 +64,21 @@
                         <td> @if($atencion->proximo_turno) {{ \Carbon\Carbon::parse($atencion->proximo_turno)->formatLocalized('%d/%m/%Y') }} @endif</td>
                     </tr>
                 </table>
+
+                <br>
+                
+                <table>
+                    <tr>
+                        <td><b><u>Servicios prestados</u></b></td>
+                    </tr>
+                        @foreach ($serviciosPrestados as $servicio)
+                        <tr>
+                            <td>{{ $servicio->nomeclatura }}</td>
+                            <td>{{ $servicio->descripcion }}</td>
+                        </tr>
+                        @endforeach
+                </table>
+
                 <br><i><b>Creado:</b> {{ $atencion->created_at->formatLocalized('%d/%m/%Y %H:%M') }} por {{ $atencion->creado_por }}</i>
                 @if ( $atencion->eliminado_por != null )
                 <br><i><b>Eliminado:</b> {{ $atencion->deleted_at->formatLocalized('%d/%m/%Y %H:%M') }} por {{ $atencion->eliminado_por }}</i>
