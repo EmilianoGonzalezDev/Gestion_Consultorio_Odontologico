@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@auth
-@if (auth()->user()->rol == 1)
 
 <!-- Mensaje post eliminar -->
 @if (Session::has('deleted'))
@@ -19,9 +17,12 @@
 <!-- Título y botón "Nuevo" -->
 <div class="div_titulo">
     <h2>Nomeclaturas</h2>
-    <div class="my-4 btn-group-sm">
-        <a href="{{ route('nomeclaturas.create') }}" class="btn btn-primary">Nueva Nomeclatura</a>
-    </div>
+    @auth
+    @if (auth()->user()->rol == 1)
+        <div class="my-4 btn-group-sm">
+            <a href="{{ route('nomeclaturas.create') }}" class="btn btn-primary">Nueva Nomeclatura</a>
+        </div>
+    @endif
 </div>
 
 <!-- Tabla -->
@@ -33,7 +34,9 @@
                 <th>Descripción</th>
                 <th>Creado</th>
                 <th>Editado</th>
-                <th>Acciones</th>
+                @if (auth()->user()->rol == 1)
+                    <th>Acciones</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -45,11 +48,13 @@
                 <td>{{$nomeclatura->descripcion}}</td>
                 <td>{{$nomeclatura->created_at->formatLocalized('%d/%m/%Y %H:%M')}}</td>
                 <td>{{$nomeclatura->updated_at->formatLocalized('%d/%m/%Y %H:%M')}}</td>
+                @if (auth()->user()->rol == 1)
                 <td>
                     <div class="btn-group-sm dt-col-nowrap" role="group" aria-label="Basic example">
                         <a href="{{ route('nomeclaturas.edit', $nomeclatura) }}" class="btn btn-dark btn-group">Editar</a>
                     </div>
                 </td>
+                @endif
             </tr>
             @endforeach
         </tbody>
@@ -69,6 +74,5 @@
     });
 </script>
 
-@endif
 @endauth
 @endsection

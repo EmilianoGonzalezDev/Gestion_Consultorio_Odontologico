@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('comentarios')->nullable();
             $table->integer('rol')->nullable();
+            $table->boolean('ocultar_montos');
             $table->string('creado_por');
             $table->string('editado_por')->nullable();
             $table->string('eliminado_por')->nullable();

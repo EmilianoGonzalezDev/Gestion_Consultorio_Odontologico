@@ -57,6 +57,7 @@ class EmpleadoController extends Controller
             'telefono' => ['nullable','string', 'max:20'],
             'comentarios' => ['nullable','string', 'max:100'],
             'rol' => ['nullable','integer', 'min:1', 'max:9'],
+            'ocultar_montos' => ['bool'],
         ]);
         
         $empleadoNuevo = new App\User;
@@ -75,6 +76,7 @@ class EmpleadoController extends Controller
         $empleadoNuevo->telefono = $request->telefono;
         $empleadoNuevo->comentarios = $request->comentarios;
         $empleadoNuevo->rol = $request->rol; //del 1 al 9 //1=ADMIN
+        $empleadoNuevo->ocultar_montos = false;
         $empleadoNuevo->creado_por = auth()->user()->usuario;
         $empleadoNuevo->save();
 
@@ -181,5 +183,26 @@ class EmpleadoController extends Controller
     {  
         $empleados = App\User::onlyTrashed()->get();
         return view('empleados/eliminados',compact('empleados'));
+    }
+
+    public function configuracion()
+    {
+        return view('empleados/configuracion');
+    }
+
+    public function guardarConfiguracion(Request $request)
+    {
+        $empleado = App\User::findOrFail(auth()->user()->id);
+
+        if ($request->ocultar_montos) {
+            $empleado->ocultar_montos = true;
+        }
+        else{
+            $empleado->ocultar_montos = false;
+        }
+
+        $empleado->save();
+        
+        return back()->with('mensaje', 'Configuración guardada correctamente');
     }
 }

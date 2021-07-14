@@ -24,6 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/empleados', 'EmpleadoController');
 Route::get('empleados/restore/{id}', ['as' =>  'empleados.restore', 'uses' => 'EmpleadoController@restore']);
 Route::get('/empleados.eliminados', ['as' =>  'empleados.verEliminados', 'uses' => 'EmpleadoController@verEliminados']);
+Route::get('/empleados.configuracion', ['as' =>  'empleados.configuracion', 'uses' => 'EmpleadoController@configuracion']);
+Route::post('/empleados.guardarConfiguracion', ['as' =>  'empleados.guardarConfiguracion', 'uses' => 'EmpleadoController@guardarConfiguracion']);
+
 
 /* PACIENTES */
 Route::resource('/pacientes', 'pacienteController');

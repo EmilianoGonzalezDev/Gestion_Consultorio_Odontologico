@@ -84,10 +84,11 @@ class PacienteController extends Controller
         $empleados = App\User::get();
         $pacientes = App\Paciente::get();
         $atenciones = App\Paciente::withTrashed()->find($id)->atenciones;
+        $nomeclaturas = App\Nomeclatura::get();
         //$ortodoncia = App\Ortodoncia::find($id)->ortodoncia; //este falla cuando no hay ficha asociada
         $ortodoncia = App\Ortodoncia::get()->where('paciente_id', '=', $id)->first();
         //$deuda = App\Paciente::deuda(1); // NO
-        return view('pacientes/detalles',compact('paciente','pacientes','atenciones','empleados','ortodoncia'));
+        return view('pacientes/detalles',compact('paciente','pacientes','atenciones','empleados','ortodoncia','nomeclaturas'));
     }
 
     /**
