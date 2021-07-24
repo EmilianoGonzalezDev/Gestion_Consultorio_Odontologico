@@ -64,6 +64,7 @@ Route::delete('/atenciones/eliminarpago/{id}', ['as' =>  'atenciones.eliminarPag
 Route::get('/atenciones/restaurarpago/{id}', ['as' =>  'atenciones.restaurarPago', 'uses' => 'AtencionController@restaurarPago']);
 Route::get('atenciones/createByID/{id}', ['as' =>  'atenciones.createByID', 'uses' => 'AtencionController@createByID']);
 Route::post('atenciones/guardarServiciosPrestados', 'AtencionController@guardarServiciosPrestados')->name('guardarServiciosPrestados');
+Route::get('atenciones.getAtenciones', 'AtencionController@getAtenciones')->name('getAtenciones');
 
 /* NOMECLATURAS*/
 Route::resource('/nomeclaturas', 'NomeclaturaController');

@@ -93,11 +93,11 @@
                             <div class="col-md-3">
                                 <select name="estado_civil" id="estado_civil" class="form-control">
                                     <option value=""></option>
-                                    <option value="Soltero">Soltero</option>
-                                    <option value="Casado">Casado</option>
-                                    <option value="Separado">Separado</option>
-                                    <option value="Divorciado">Divorciado</option>
-                                    <option value="Otro">Otro</option>
+                                    <option @if($paciente->estado_civil == "Soltero") selected="true" @endif value="Soltero">Soltero</option>
+                                    <option @if($paciente->estado_civil == "Casado") selected="true" @endif value="Casado">Casado</option>
+                                    <option @if($paciente->estado_civil == "Separado") selected="true" @endif value="Separado">Separado</option>
+                                    <option @if($paciente->estado_civil == "Divorciado") selected="true" @endif value="Divorciado">Divorciado</option>
+                                    <option @if($paciente->estado_civil == "Otro") selected="true" @endif value="Otro">Otro</option>
                                 </select>
                                 @error('estado_civil') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
@@ -107,9 +107,9 @@
                             <div class="col-md-2">
                                 <select name="genero" id="genero" class="form-control">
                                     <option value=""></option>
-                                    <option value="M">M</option>
-                                    <option value="F">F</option>
-                                    <option value="O">O</option>
+                                    <option @if($paciente->genero == "M") selected="true" @endif value="M">Masc.</option>
+                                    <option @if($paciente->genero == "F") selected="true" @endif value="F">Femen.</option>
+                                    <option @if($paciente->genero == "O") selected="true" @endif value="O">Otro</option>
                                 </select>
                                 @error('genero') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                             </div>
@@ -161,4 +161,13 @@
 
     })
 </script>
+
+<script>
+    // Si el usuario actual es odontologo, colocarlo automaticamente en el select de crear atencion
+        $(document).ready
+        (function(){
+            var selectEstadoCivil = document.getElementById('estado_civil');
+            selectEstadoCivil.value = {{ $paciente->estado_civil }};
+        });
+    </script>
 @endsection

@@ -18,11 +18,13 @@ class Atencion extends Model
         return $this->belongsToMany('App\Nomeclatura','servicio_prestados','atencion_id','nomeclatura_id');
     }
 
-    /*public function user() //esto andaba para buscar con find() pero daba error en la lista de eliminados, y tambien si se eliminaba un paciente
+/*
+    public function user() //esto andaba para buscar con find() pero daba error en la lista de eliminados, y tambien si se eliminaba un paciente
     {
         return $this->belongsTo('App\User');
-    }
-    
+    }*/
+
+    /*
     public function paciente()
     {
         return $this->belongsTo('App\Paciente');

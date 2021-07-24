@@ -29,8 +29,25 @@ class AtencionController extends Controller
      */
     public function index()
     {
-        $atenciones = app\Atencion::get(); //obtener todos los atenciones      
-        return view('atenciones/index', compact('atenciones'));
+        return view('atenciones/index');
+    }
+
+    public function getAtenciones()
+    {
+        $atenciones = App\Atencion::
+                        select('id','user_id','paciente_id','importe','pago','fecha','hora')
+                        ->addSelect(['profesional_nombre' => User::select('nombre')->whereColumn('id','user_id')])
+                        ->addSelect(['profesional_apellido' => User::select('apellido')->whereColumn('id','user_id')])
+                        ->addSelect(['paciente_nombre' => Paciente::select('nombre')->whereColumn('id','paciente_id')])
+                        ->addSelect(['paciente_apellido' => Paciente::select('apellido')->whereColumn('id','paciente_id')]);
+
+        return datatables()
+            ->of($atenciones)
+            ->editColumn('fecha', function(App\Atencion $atencion) { return $atencion->fecha->formatLocalized('%d/%m/%Y'); })
+            ->addColumn('saldo', function(App\Atencion $atencion) { return $atencion->importe - $atencion->pago; })
+            ->addColumn('botones','botones/botonesAtencion')
+            ->rawColumns(['botones','paciente_nombre','paciente_apellido'])
+            ->toJson();
     }
 
     /**

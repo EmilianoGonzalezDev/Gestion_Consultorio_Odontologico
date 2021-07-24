@@ -47,18 +47,20 @@
                         <td><b>Fecha:</b></td>
                         <td> {{ $atencion->fecha->formatLocalized('%d/%m/%Y') }} {{\Carbon\Carbon::parse($atencion->hora)->formatLocalized('%H:%M')}}</td>
                     </tr>
-                    <tr>
-                        <td><b>Importe:</b></td>
-                        <td> ${{ $atencion->importe }}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Pago:</b></td>
-                        <td> ${{ $atencion->pago }}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Saldo:</b></td>
-                        <td> <b>${{ $atencion->importe - $atencion->pago }}</b></td>
-                    </tr>
+                    @if (!(App\User::empleado($atencion->user_id)->ocultar_montos) && (App\User::empleado($atencion->user_id) != Auth::user()))
+                        <tr>
+                            <td><b>Importe:</b></td>
+                            <td> ${{ $atencion->importe }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Pago:</b></td>
+                            <td> ${{ $atencion->pago }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Saldo:</b></td>
+                            <td> <b>${{ $atencion->importe - $atencion->pago }}</b></td>
+                        </tr>
+                    @endif
                     <tr>
                         <td><b>Próximo turno:</b></td>
                         <td> @if($atencion->proximo_turno) {{ \Carbon\Carbon::parse($atencion->proximo_turno)->formatLocalized('%d/%m/%Y') }} @endif</td>
@@ -112,7 +114,11 @@
             <tr>
                 <td scope="row">{{$pago->id}}</td>
                 <td>{{\Carbon\Carbon::parse($pago->fecha)->formatLocalized('%d/%m/%Y')}}</td>
-                <td>${{$pago->monto}}</td>
+                @if ((App\User::empleado($atencion->user_id)->ocultar_montos) && (App\User::empleado($atencion->user_id) != Auth::user()))
+                    <td>-</td>
+                @else
+                    <td>${{$pago->monto}}</td>
+                @endif
                 <td>{{$pago->detalle}}</td>
                 <td>@if ($pago->cubierto_obra_social) Si @else No @endif</td>
                 <td>{{$pago->creado_por}}</td>

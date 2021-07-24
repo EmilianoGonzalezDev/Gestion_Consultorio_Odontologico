@@ -58,7 +58,11 @@
                     </tr>
                     <tr>
                         <td><b>Género:</b></td>
-                        <td> {{ $paciente->genero }}</td>
+                        <td>@if($paciente->genero == 'M') Masculino
+                            @elseif($paciente->genero == 'F') Femenino
+                            @else Otro
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Cobertura:</b></td>
@@ -150,8 +154,8 @@
                     <th>Operación Prevista</th>
                     <th>Importe $</th>
                     <th>Pago $</th>
-                    <th>Detalle</th>
                     <th>Saldo $</th>
+                    <th>Detalle</th>
                     <th>Fecha de atención</th>
                     <th>Próximo Turno</th>
                 </tr>
@@ -164,10 +168,16 @@
                     <td>{{$atencion->arcada_superior}}</td>
                     <td>{{$atencion->arcada_inferior}}</td>
                     <td>{{$atencion->operacion_prevista}}</td>
-                    <td>{{$atencion->importe}}</td>
-                    <td>{{$atencion->pago}}</td>
+                    @if ((App\User::empleado($atencion->user_id)->ocultar_montos) && (App\User::empleado($atencion->user_id) != Auth::user()))
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    @else
+                        <td>{{$atencion->importe}}</td>
+                        <td>{{$atencion->pago}}</td>
+                        <td>{{$atencion->importe - $atencion->pago}}</td>
+                    @endif
                     <td>{{$atencion->detalle}}</td>
-                    <td>{{$atencion->importe - $atencion->pago}}</td>
                     <td>{{$atencion->fecha->formatLocalized('%d/%m/%Y')}} {{$atencion->hora}}</td>
                     <td>{{$atencion->proximo_turno}}</td>
                 </tr>
