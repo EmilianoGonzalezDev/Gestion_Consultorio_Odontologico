@@ -183,9 +183,11 @@
                 @endforeach
             </tbody>
         </table>
+        @if (auth()->user()->rol != 1)
         <br>
         Saldo actual: <b> ${{ App\Paciente::deuda($paciente->id) }} </b>
         <br>
+        @endif
     </div>
 </div>
 
