@@ -7,6 +7,7 @@
 * Gestionar Usuarios del sistema
 * Gestionar Pacientes
 * Gestionar Atenciones, Pagos, Saldos
+* Gestionar Nomeclaturas de Servicios Odontológicos
 * Gestionar Insumos, Stock, Compras
 * Gestionar Tratamientos de Ortodoncia
 * Generación de Reportes (ingreso de efectivo, elementos con stock bajo, etc)

@@ -152,10 +152,12 @@
                     <th>Arcada Superior</th>
                     <th>Arcada Inferior</th>
                     <th>Operación Prevista</th>
+                    @if (auth()->user()->rol != 1)
                     <th>Importe $</th>
                     <th>Pago $</th>
                     <th>Saldo $</th>
                     <th>Detalle</th>
+                    @endif
                     <th>Fecha de atención</th>
                     <th>Próximo Turno</th>
                 </tr>
@@ -168,16 +170,13 @@
                     <td>{{$atencion->arcada_superior}}</td>
                     <td>{{$atencion->arcada_inferior}}</td>
                     <td>{{$atencion->operacion_prevista}}</td>
-                    @if ((App\User::empleado($atencion->user_id)->ocultar_montos) && (App\User::empleado($atencion->user_id) != Auth::user()))
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    @else
+                    <!-- @ if ((App\User::empleado($atencion->user_id)->ocultar_montos) && (App\User::empleado($atencion->user_id) != Auth::user())) -->
+                    @if (auth()->user()->rol != 1)
                         <td>{{$atencion->importe}}</td>
                         <td>{{$atencion->pago}}</td>
                         <td>{{$atencion->importe - $atencion->pago}}</td>
+                        <td>{{$atencion->detalle}}</td>
                     @endif
-                    <td>{{$atencion->detalle}}</td>
                     <td>{{$atencion->fecha->formatLocalized('%d/%m/%Y')}} {{$atencion->hora}}</td>
                     <td>{{$atencion->proximo_turno}}</td>
                 </tr>

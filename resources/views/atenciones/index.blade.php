@@ -32,9 +32,11 @@
                 <th>&nbsp;</th>
                 <th>Paciente</th>
                 <th>&nbsp;</th>
+                @if (auth()->user()->rol != 1)
                 <th>Importe</th>
                 <th>Pago</th>
                 <th>Saldo</th>
+                @endif
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>&nbsp;</th>
@@ -47,24 +49,43 @@
 <!-- Scripts -->
 <script>
     $(document).ready(function() {
-        $('#atenciones').DataTable({
-            "language": {"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"},
-            "ajax":"{{route('getAtenciones')}}",
-            "columns":[
-                {data:'id'},
-                {data:'profesional_nombre'},
-                {data:'profesional_apellido'},
-                {data:'paciente_nombre'},
-                {data:'paciente_apellido'},
-                {data:'importe'},
-                {data:'pago'},
-                {data:'saldo'},
-                {data:'fecha'},
-                {data:'hora'},
-                {data:'botones'},
-            ],
-            responsive: true
-        });
+        if({{auth()->user()->rol == 1}}){
+            $('#atenciones').DataTable({
+                "language": {"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"},
+                "ajax":"{{route('getAtenciones')}}",
+                "columns":[
+                    {data:'id'},
+                    {data:'profesional_nombre'},
+                    {data:'profesional_apellido'},
+                    {data:'paciente_nombre'},
+                    {data:'paciente_apellido'},
+                    {data:'fecha'},
+                    {data:'hora'},
+                    {data:'botones'},
+                ],
+                responsive: true
+            });
+        }
+        else{
+            $('#atenciones').DataTable({
+                "language": {"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"},
+                "ajax":"{{route('getAtenciones')}}",
+                "columns":[
+                    {data:'id'},
+                    {data:'profesional_nombre'},
+                    {data:'profesional_apellido'},
+                    {data:'paciente_nombre'},
+                    {data:'paciente_apellido'},
+                    {data:'importe'},
+                    {data:'pago'},
+                    {data:'saldo'},
+                    {data:'fecha'},
+                    {data:'hora'},
+                    {data:'botones'},
+                ],
+                responsive: true
+            });
+        }
     });
 </script>
 

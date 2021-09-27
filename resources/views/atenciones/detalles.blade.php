@@ -47,7 +47,8 @@
                         <td><b>Fecha:</b></td>
                         <td> {{ $atencion->fecha->formatLocalized('%d/%m/%Y') }} {{\Carbon\Carbon::parse($atencion->hora)->formatLocalized('%H:%M')}}</td>
                     </tr>
-                    @if (!(App\User::empleado($atencion->user_id)->ocultar_montos) && (App\User::empleado($atencion->user_id) != Auth::user()))
+                    <!--@ if (!(App\User::empleado($atencion->user_id)->ocultar_montos) && (App\User::empleado($atencion->user_id) != Auth::user()))-->
+                    @if (auth()->user()->rol != 1)
                         <tr>
                             <td><b>Importe:</b></td>
                             <td> ${{ $atencion->importe }}</td>
