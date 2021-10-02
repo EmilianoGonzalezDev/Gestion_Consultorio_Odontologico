@@ -48,11 +48,11 @@
 
 <!-- Scripts -->
 <script>
-    $(document).ready(function() {
-        if({{auth()->user()->rol == 1}}){
-            $('#atenciones').DataTable({
-                "language": {"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"},
-                "ajax":"{{route('getAtenciones')}}",
+    $(document).ready(function(){
+        if ({{auth()->user()->rol}} == "1"){
+        $('#atenciones').DataTable({
+            "language": {"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"},
+            "ajax":"{{route('getAtenciones')}}",
                 "columns":[
                     {data:'id'},
                     {data:'profesional_nombre'},
@@ -67,9 +67,9 @@
             });
         }
         else{
-            $('#atenciones').DataTable({
-                "language": {"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"},
-                "ajax":"{{route('getAtenciones')}}",
+        $('#atenciones').DataTable({
+            "language": {"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"},
+            "ajax":"{{route('getAtenciones')}}",
                 "columns":[
                     {data:'id'},
                     {data:'profesional_nombre'},
