@@ -53,7 +53,7 @@
                 <td>{{$paciente->telefono}}</td>
                 <td>{{$paciente->email}}</td>
                 @if (auth()->user()->rol != 1)
-                <td>${{ App\Paciente::deuda($paciente->id) }}</td>
+                <td class="money">$ {{ App\Paciente::deuda($paciente->id) }}</td>
                 @endif
                 <td>
                     <div class="btn-group-sm dt-col-nowrap" role="group" aria-label="Basic example">

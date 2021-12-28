@@ -51,15 +51,15 @@
                     @if (auth()->user()->rol != 1)
                         <tr>
                             <td><b>Importe:</b></td>
-                            <td> ${{ $atencion->importe }}</td>
+                            <td> $ {{ $atencion->importe }}</td>
                         </tr>
                         <tr>
                             <td><b>Pago:</b></td>
-                            <td> ${{ $atencion->pago }}</td>
+                            <td> $ {{ $atencion->pago }}</td>
                         </tr>
                         <tr>
                             <td><b>Saldo:</b></td>
-                            <td> <b>${{ $atencion->importe - $atencion->pago }}</b></td>
+                            <td> <b>$ {{ $atencion->importe - $atencion->pago }}</b></td>
                         </tr>
                     @endif
                     <tr>
@@ -118,7 +118,7 @@
                 @if ((App\User::empleado($atencion->user_id)->ocultar_montos) && (App\User::empleado($atencion->user_id) != Auth::user()))
                     <td>-</td>
                 @else
-                    <td>${{$pago->monto}}</td>
+                    <td class="money">$ {{$pago->monto}}</td>
                 @endif
                 <td>{{$pago->detalle}}</td>
                 <td>@if ($pago->cubierto_obra_social) Si @else No @endif</td>

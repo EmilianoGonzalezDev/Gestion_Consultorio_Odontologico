@@ -149,8 +149,7 @@
                 <tr>
                     <th>#</th>
                     <th>Profesional</th>
-                    <th>Arcada Superior</th>
-                    <th>Arcada Inferior</th>
+                    <th>Servicios Prestados</th>
                     <th>Operación Prevista</th>
                     @if (auth()->user()->rol != 1)
                     <th>Importe $</th>
@@ -164,17 +163,25 @@
             </thead>
             <tbody>
                 @foreach ($atenciones as $atencion)
+                @php $serviciosPrestados = $atencion->nomeclaturas; @endphp
                 <tr>
                     <th scope="row">{{$atencion->id}}</td>
-                    <td>{{App\User::empleado($atencion->user_id)->nombre}} {{App\User::empleado($atencion->user_id)->apellido}}</td>
-                    <td>{{$atencion->arcada_superior}}</td>
-                    <td>{{$atencion->arcada_inferior}}</td>
+                    <td>{{App\User::empleado($atencion->user_id)->nombre}}</br>
+                        {{App\User::empleado($atencion->user_id)->apellido}}</td>
+                    <td>
+                        @foreach ($serviciosPrestados as $servicio)
+                        {{ $servicio->nomeclatura }} {{ $servicio->descripcion }} </br>
+                        @endforeach
+                    </td>
+
+
+
                     <td>{{$atencion->operacion_prevista}}</td>
                     <!-- @ if ((App\User::empleado($atencion->user_id)->ocultar_montos) && (App\User::empleado($atencion->user_id) != Auth::user())) -->
                     @if (auth()->user()->rol != 1)
-                        <td>{{$atencion->importe}}</td>
-                        <td>{{$atencion->pago}}</td>
-                        <td>{{$atencion->importe - $atencion->pago}}</td>
+                        <td class="money">{{$atencion->importe}}</td>
+                        <td class="money">{{$atencion->pago}}</td>
+                        <td class="money">{{$atencion->importe - $atencion->pago}}</td>
                         <td>{{$atencion->detalle}}</td>
                     @endif
                     <td>{{$atencion->fecha->formatLocalized('%d/%m/%Y')}} {{$atencion->hora}}</td>
@@ -185,7 +192,7 @@
         </table>
         @if (auth()->user()->rol != 1)
         <br>
-        Saldo actual: <b> ${{ App\Paciente::deuda($paciente->id) }} </b>
+        Saldo actual: <b> $ {{ App\Paciente::deuda($paciente->id) }} </b>
         <br>
         @endif
     </div>

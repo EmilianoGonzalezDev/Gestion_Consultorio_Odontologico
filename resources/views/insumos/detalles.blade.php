@@ -43,70 +43,71 @@
             </div>
         </div>
     </div>
-        
-    <!-- HISTORIAL COMPRAS  -->
-    <div  style="display: inline-block;"> 
-    <br>
-    <h4>Historial de Compras</h4>
-    <table id="historial_stock" class="table table-hover table-bordered table-responsive">
-            <thead class="thead-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Fecha</th>
-                    <th>Cantidad</th>
-                    <th>Precio $</th>
-                    <th>Registrado por</th>
-                </tr>
-            </thead>
-            <tbody>           
-                @foreach ($compras as $compra)
-                            <tr>
-                                <th scope="row">{{$compra->id}}</th>
-                                <th>{{$compra->fecha_compra->formatLocalized('%d/%m/%Y')}}</th>
-                                <th>{{$compra->cantidad_adquirida}}</th>
-                                <th>{{$compra->precio_compra}}</th>
-                                <th>{{$compra->creado_por}}</th>
-                            </tr>
-                @endforeach
-            </tbody>
-    </table>
-    </div>
+    
+    <div>
+        <br>
+        <!-- HISTORIAL COMPRAS  -->
+        <div style="float: left" > 
+        <h4>Historial de Compras</h4>
+        <table id="historial_stock" class="table table-hover table-bordered table-responsive">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Fecha</th>
+                        <th>Cantidad</th>
+                        <th>Precio $</th>
+                        <th>Registrado por</th>
+                    </tr>
+                </thead>
+                <tbody>           
+                    @foreach ($compras as $compra)
+                                <tr style="height: 54px;">
+                                    <th scope="row">{{$compra->id}}</th>
+                                    <th>{{$compra->fecha_compra->formatLocalized('%d/%m/%Y')}}</th>
+                                    <th class="text-center">{{$compra->cantidad_adquirida}}</th>
+                                    <th class="money">{{$compra->precio_compra}}</th>
+                                    <th>{{$compra->creado_por}}</th>
+                                </tr>
+                    @endforeach
+                </tbody>
+        </table>
+        </div>
 
-     <!-- HISTORIAL Reducciones Stock  -->
-    <div style="display: inline-block;">
-    <br>
-    <h4>Reducciones de Stock</h4>
-    <table id="reducciones_stock" class="table table-hover table-bordered table-responsive">
-            <thead class="thead-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Fecha</th>
-                    <th>Cantidad</th>
-                    <th>Registrado por</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>           
-                @foreach ($reducciones as $reduccion)
-                            <tr>
-                                <th scope="row">{{$reduccion->id}}</th>
-                                <th>{{$reduccion->fecha->formatLocalized('%d/%m/%Y %H:%M')}}</th>
-                                <th>{{$reduccion->cantidad}}</th>
-                                <th>{{$reduccion->creado_por}}</th>
-                                <td>
-                                    <div class="btn-group-sm" role="group" aria-label="Basic example">
-                                        <form action="{{ route('insumos.deshacerReduccion', $reduccion) }}" method="POST" class="d-inline">
-                                                @method('DELETE')
-                                                @csrf
-                                                <input type=button class="btn btn-danger btn-sm btn-group" value="Eliminar"
-                                                        onclick="if(confirm('Se eliminará la acción ¿Continuar?')){this.form.submit();}"/>
-                                        </form>
-                                    </div>                  
-                                </td>
-                            </tr>
-                @endforeach
-            </tbody>
-    </table>
+        <!-- HISTORIAL Reducciones Stock  -->
+        <div style="float: left">
+        <h4>Reducciones de Stock</h4>
+        <table id="reducciones_stock" class="table table-hover table-bordered table-responsive">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Fecha</th>
+                        <th>Cantidad</th>
+                        <th>Registrado por</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>           
+                    @foreach ($reducciones as $reduccion)
+                                <tr>
+                                    <th scope="row">{{$reduccion->id}}</th>
+                                    <th>{{$reduccion->fecha->formatLocalized('%d/%m/%Y %H:%M')}}</th>
+                                    <th>{{$reduccion->cantidad}}</th>
+                                    <th>{{$reduccion->creado_por}}</th>
+                                    <td>
+                                        <!-- <div class="btn-group-sm" role="group" aria-label="Basic example"> -->
+                                            <form action="{{ route('insumos.deshacerReduccion', $reduccion) }}" method="POST" class="d-inline">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <input type=button class="btn btn-danger btn-sm" value="Eliminar"
+                                                            onclick="if(confirm('Se eliminará la acción ¿Continuar?')){this.form.submit();}"/>
+                                            </form>
+                                        <!-- </div>                   -->
+                                    </td>
+                                </tr>
+                    @endforeach
+                </tbody>
+        </table>
+        </div>
     </div>
 
 

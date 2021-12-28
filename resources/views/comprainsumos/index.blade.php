@@ -55,8 +55,8 @@
                 <td>{{$insumo->nombre}}</td>
                 <td>{{$insumo->marca}}</td>
                 <td>{{$insumo->contenido_cantidad}} {{$insumo->contenido_unidad}}</td>
-                <td>${{$compra->precio_compra}}</td>
-                <td>{{$compra->cantidad_adquirida}}</td>
+                <td class="money">$ {{$compra->precio_compra}}</td>
+                <td class="text-center">{{$compra->cantidad_adquirida}}</td>
                 <td>{{$profesional->nombre}} {{$profesional->apellido}}</td>
                 <td>{{$compra->creado_por}}</td>
                 <td>{{$compra->fecha_compra->formatLocalized('%d/%m/%Y')}}</td>

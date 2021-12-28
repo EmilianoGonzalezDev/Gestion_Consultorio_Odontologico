@@ -7,6 +7,10 @@
     white-space: nowrap;
 }
 
+.money{
+    text-align: right !important;
+}
+
 
 
 /* Para resoluciones MENORES a 1301px de ancho */

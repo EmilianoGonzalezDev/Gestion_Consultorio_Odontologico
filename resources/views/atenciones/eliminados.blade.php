@@ -31,9 +31,9 @@
                 <td><a href="{{ route('pacientes.show', $atencion->paciente_id) }}">Pac #{{$atencion->paciente_id}}</a></td>
                 <td>{{App\Paciente::paciente($atencion->paciente_id)->nombre}}</td>
                 <td>{{App\Paciente::paciente($atencion->paciente_id)->apellido}}</td>
-                <td>${{$atencion->importe}}</td>
-                <td>${{$atencion->pago}}</td>
-                <td>${{$atencion->importe - $atencion->pago}}</td>
+                <td class="money">${{$atencion->importe}}</td>
+                <td class="money">${{$atencion->pago}}</td>
+                <td class="money">${{$atencion->importe - $atencion->pago}}</td>
                 <td>{{$atencion->fecha->formatLocalized('%d/%m/%Y')}}</td>
                 <td>{{$atencion->hora}}</td>
                 <td>
