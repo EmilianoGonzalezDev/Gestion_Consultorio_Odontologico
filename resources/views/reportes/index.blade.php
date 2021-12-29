@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@auth
+@if (auth()->user()->rol == 1)
     <div class="container my-4">        
         <h2>Reportes</h2>
         <div class="container">
@@ -104,6 +106,6 @@
 
     </div>
 
-
-
+@endif
+@endauth
 @endsection

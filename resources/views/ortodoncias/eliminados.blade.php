@@ -39,12 +39,14 @@
                 <td>{{$ortodoncia->cuota}}</td>
                 <td>{{$ortodoncia->eliminado_por}} el {{ $ortodoncia->deleted_at->formatLocalized('%d/%m/%Y %H:%M') }}</td>
                 <td>
-                    <div class="btn-group-sm" role="group" aria-label="Basic example">
+                    <div class="btn-group-sm text-center" role="group" aria-label="Basic example">
                         <a href="{{ route('pacientes.show', $ortodoncia->paciente_id) }}" class="btn btn-info btn-group">Ver</a>
+                        @if (auth()->user()->rol == 1)
                         <form action="{{ route('ortodoncias.restore', $ortodoncia) }}" class="d-inline">
                             @csrf
                             <input type=button class="btn btn-danger btn-sm btn-group" value="Restaurar" onclick="if(confirm('Se restaurará la ficha de ortodoncia ¿Continuar?')){this.form.submit();}" />
                         </form>
+                        @endif
                     </div>
                 </td>
             </tr>

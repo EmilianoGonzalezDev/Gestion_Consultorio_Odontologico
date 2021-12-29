@@ -40,10 +40,12 @@
                 <td>{{$compra->deleted_at->formatLocalized('%d/%m/%Y')}}</td>
                 <td>
                     <div class="btn-group-sm dt-col-nowrap" role="group" aria-label="Basic example">
+                    @if (auth()->user()->rol == 1)
                         <form action="{{ route('comprainsumos.restore', $compra) }}" class="d-inline">
                             @csrf
                             <input type=button class="btn btn-warning btn-sm btn-group" value="Restaurar" onclick="if(confirm('Se restaurará este registro de compra de insumo ¿Continuar?')){this.form.submit();}" />
                         </form>
+                    @endif
                     </div>
                 </td>
             </tr>

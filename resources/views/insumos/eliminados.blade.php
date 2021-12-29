@@ -33,12 +33,14 @@
                 <td>{{$insumo->detalles }}</td>
                 <td>{{$insumo->stock }}</td>
                 <td>
-                    <div class="btn-group-sm dt-col-nowrap" role="group" aria-label="Basic example">
+                    <div class="btn-group-sm dt-col-nowrap text-center" role="group" aria-label="Basic example">
                         <a href="{{ route('insumos.show', $insumo) }}" class="btn btn-info btn-group">Ver</a>
+                        @if (auth()->user()->rol == 1)
                         <form action="{{ route('insumos.restore', $insumo) }}" class="d-inline">
                             @csrf
                             <input type=button class="btn btn-warning btn-sm btn-group" value="Restaurar" onclick="if(confirm('Se restaurará el insumo ¿Continuar?')){this.form.submit();}" />
                         </form>
+                        @endif
                     </div>
                 </td>
             </tr>

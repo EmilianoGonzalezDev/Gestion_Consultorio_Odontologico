@@ -37,12 +37,14 @@
                 <td>{{$atencion->fecha->formatLocalized('%d/%m/%Y')}}</td>
                 <td>{{$atencion->hora}}</td>
                 <td>
-                    <div class="btn-group-sm dt-col-nowrap" role="group" aria-label="Basic example">
+                    <div class="btn-group-sm dt-col-nowrap text-center" role="group" aria-label="Basic example">
                         <a href="{{ route('atenciones.show', $atencion) }}" class="btn btn-info btn-group">Ver</a>
+                        @if (auth()->user()->rol == 1)
                         <form action="{{ route('atenciones.restore', $atencion) }}" class="d-inline">
                             @csrf
                             <input type=button class="btn btn-warning btn-sm btn-group" value="Restaurar" onclick="if (confirm('Se restaurará este registro de atencion incluyendo el importe y el pago ¿Continuar?')){this.form.submit();}" />
                         </form>
+                        @endif
                     </div>
                 </td>
             </tr>

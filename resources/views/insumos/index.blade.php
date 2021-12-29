@@ -61,7 +61,7 @@
                             @csrf
                             <input type=button class="btn btn-danger btn-sm btn-group" value="Eliminar" onclick="if (confirm('Se eliminará el insumo y todo el historial de compras (stock) ¿Continuar?')){this.form.submit();}" />
                         </form>
-                        @else
+                        @elseif(auth()->user()->rol == 1)
                         <a href="{{ route('insumos.reducirStock', $insumo) }}" class="btn btn-danger btn-group">Reducir</a>
                         @endif
                     </div>
