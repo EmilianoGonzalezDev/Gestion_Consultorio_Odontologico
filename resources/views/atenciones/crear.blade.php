@@ -130,9 +130,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="nomeclaturas_select" class="col-md-4 col-form-label text-md-right">Servicios Prestados</label>
+                            <label for="nomeclaturas_select" class="col-md-4 col-form-label text-md-right">Servicios prestados</label>
                             <div class="select col-md-6">
-                                <select name="nomeclaturas_select" id="nomeclaturas_select" class="form-control">
+                                <select name="nomeclaturas_select" id="nomeclaturas_select" class="form-control" onchange="habilitarDeshabilitarBotonAgregar()">
                                     <option value="" selected></option>
                                     @foreach ($nomeclaturas as $nomeclatura)
                                     <option value="{{$nomeclatura->id}}">{{$nomeclatura->nomeclatura}} - {{$nomeclatura->descripcion}}</option>
@@ -142,7 +142,7 @@
                             <input type="button" id="btn_agregar_servicio" class="btn btn-outline-success btn-sm" value="Agregar">
                         </div>
 
-                        <div id="div_servicios_prestados" class="col-md-12 offset-md-2"> 
+                                                <div id="div_servicios_prestados" class="col-md-12 offset-md-2"> 
                         </div>
 
                         <div class="form-group row mb-0">
@@ -178,11 +178,21 @@
     var botonEnviar = document.getElementById('btn_enviar');
     var divServiciosPrestados = document.getElementById('div_servicios_prestados');
     var bAgregar = document.getElementById('btn_agregar_servicio');
+    /* separar esto en otra funcion */
     const _inputServicios = document.createElement("input");  
         _inputServicios.type = "hidden";
         _inputServicios.name = "serviciosPrestados";
         divServiciosPrestados.appendChild(_inputServicios);
     bAgregar.addEventListener("click", agregarServicioPrestado);
+
+    function habilitarDeshabilitarBotonAgregar(){
+        if(servicioYaFueAgregado()){
+            bAgregar.disabled = true;
+        }
+        else{
+            bAgregar.disabled = false;
+        }
+    }
 
     function agregarServicioPrestado(){
         if(!servicioYaFueAgregado() && hayUnElementoSeleccionado()){
@@ -234,6 +244,9 @@
         _inputServicios.value = nuevaLista;
         if(_inputServicios.value == ""){
             botonEnviar.disabled = true;
+        }
+        if($("#nomeclaturas_select option:selected").val() == this.id){
+            bAgregar.disabled = false;
         }
     }
     
