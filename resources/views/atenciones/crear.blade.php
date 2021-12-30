@@ -142,7 +142,56 @@
                             <input type="button" id="btn_agregar_servicio" class="btn btn-outline-success btn-sm" value="Agregar">
                         </div>
 
-                                                <div id="div_servicios_prestados" class="col-md-12 offset-md-2"> 
+                        <div class="form-group row">
+                            <label for="piezas_dentales" class="col-md-4 col-form-label text-md-right">Pieza/s</label>
+                            <div class="col-md-6" name="piezas_dentales" id="piezas_dentales">
+                                <div>
+                                    <input type="checkbox" id="pieza_11" name="pieza_11" value="11"> <label for="pieza_11">11</label>
+                                    <input type="checkbox" id="pieza_12" name="pieza_12" value="12"> <label for="pieza_12">12</label>
+                                    <input type="checkbox" id="pieza_13" name="pieza_13" value="13"> <label for="pieza_13">13</label>
+                                    <input type="checkbox" id="pieza_14" name="pieza_14" value="14"> <label for="pieza_14">14</label>
+                                    <input type="checkbox" id="pieza_15" name="pieza_15" value="15"> <label for="pieza_15">15</label>
+                                    <input type="checkbox" id="pieza_16" name="pieza_16" value="16"> <label for="pieza_16">16</label>
+                                    <input type="checkbox" id="pieza_17" name="pieza_17" value="17"> <label for="pieza_17">17</label>
+                                    <input type="checkbox" id="pieza_18" name="pieza_18" value="18"> <label for="pieza_18">18</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="pieza_21" name="pieza_21" value="21"> <label for="pieza_21">21</label>
+                                    <input type="checkbox" id="pieza_22" name="pieza_22" value="22"> <label for="pieza_22">22</label>
+                                    <input type="checkbox" id="pieza_23" name="pieza_23" value="23"> <label for="pieza_23">23</label>
+                                    <input type="checkbox" id="pieza_24" name="pieza_24" value="24"> <label for="pieza_24">24</label>
+                                    <input type="checkbox" id="pieza_25" name="pieza_25" value="25"> <label for="pieza_25">25</label>
+                                    <input type="checkbox" id="pieza_26" name="pieza_26" value="26"> <label for="pieza_26">26</label>
+                                    <input type="checkbox" id="pieza_27" name="pieza_27" value="27"> <label for="pieza_27">27</label>
+                                    <input type="checkbox" id="pieza_28" name="pieza_28" value="28"> <label for="pieza_28">28</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="pieza_31" name="pieza_31" value="31"> <label for="pieza_31">31</label>
+                                    <input type="checkbox" id="pieza_32" name="pieza_32" value="32"> <label for="pieza_32">32</label>
+                                    <input type="checkbox" id="pieza_33" name="pieza_33" value="33"> <label for="pieza_33">33</label>
+                                    <input type="checkbox" id="pieza_34" name="pieza_34" value="34"> <label for="pieza_34">34</label>
+                                    <input type="checkbox" id="pieza_35" name="pieza_35" value="35"> <label for="pieza_35">35</label>
+                                    <input type="checkbox" id="pieza_36" name="pieza_36" value="36"> <label for="pieza_36">36</label>
+                                    <input type="checkbox" id="pieza_37" name="pieza_37" value="37"> <label for="pieza_37">37</label>
+                                    <input type="checkbox" id="pieza_38" name="pieza_38" value="38"> <label for="pieza_38">38</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="pieza_41" name="pieza_41" value="41"> <label for="pieza_41">41</label>
+                                    <input type="checkbox" id="pieza_42" name="pieza_42" value="42"> <label for="pieza_42">42</label>
+                                    <input type="checkbox" id="pieza_43" name="pieza_43" value="43"> <label for="pieza_43">43</label>
+                                    <input type="checkbox" id="pieza_44" name="pieza_44" value="44"> <label for="pieza_44">44</label>
+                                    <input type="checkbox" id="pieza_45" name="pieza_45" value="45"> <label for="pieza_45">45</label>
+                                    <input type="checkbox" id="pieza_46" name="pieza_46" value="46"> <label for="pieza_46">46</label>
+                                    <input type="checkbox" id="pieza_47" name="pieza_47" value="47"> <label for="pieza_47">47</label>
+                                    <input type="checkbox" id="pieza_48" name="pieza_48" value="48"> <label for="pieza_48">48</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="0" name="0" value="0"> <label for="0">N/A</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="div_servicios_prestados" class="col-md-12 offset-md-2"> 
                         </div>
 
                         <div class="form-group row mb-0">
